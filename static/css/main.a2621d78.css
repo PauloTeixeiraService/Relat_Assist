@@ -1,0 +1,2 @@
+:root{--color-background:#f5f5f9;--color-scrollbar:#e0e0e0;--color-scrollbar-hover:#bbb}::-webkit-scrollbar{height:6px;width:6px}::-webkit-scrollbar-thumb{background:#e0e0e0;background:var(--color-scrollbar);border-radius:10px}::-webkit-scrollbar-corner,::-webkit-scrollbar-track{background:#f5f5f9;background:var(--color-background);border-radius:10px}
+/*# sourceMappingURL=main.a2621d78.css.map*/
