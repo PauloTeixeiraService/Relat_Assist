@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
 
-function App() {
+// Router.
+import { BrowserRouter } from 'react-router-dom';
+
+// Context providers.
+import { ThemeProvider, LocalizationProvider, InvoiceProvider } from './providers';
+
+// App route switch.
+import AppRoutes from './app-routes';
+import { useAppSelector } from './store';
+
+// Global components.
+import { Snackbar } from './components/common';
+
+const App: FC = () => {
+  const { invoice_data } = useAppSelector((state) => state.invoice);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <BrowserRouter>
+        <LocalizationProvider>
+          <InvoiceProvider value={invoice_data}>
+            <AppRoutes />
+            <Snackbar />
+          </InvoiceProvider>
+        </LocalizationProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
