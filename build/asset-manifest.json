@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/MiguelBrunoSilva/Relat_Assist/static/css/main.a2621d78.css",
+    "main.js": "/MiguelBrunoSilva/Relat_Assist/static/js/main.073f31da.js",
+    "static/js/821.624b317d.chunk.js": "/MiguelBrunoSilva/Relat_Assist/static/js/821.624b317d.chunk.js",
+    "static/js/345.476cddfb.chunk.js": "/MiguelBrunoSilva/Relat_Assist/static/js/345.476cddfb.chunk.js",
+    "static/js/239.fa363147.chunk.js": "/MiguelBrunoSilva/Relat_Assist/static/js/239.fa363147.chunk.js",
+    "static/js/316.c14690de.chunk.js": "/MiguelBrunoSilva/Relat_Assist/static/js/316.c14690de.chunk.js",
+    "static/media/BeVietnamPro-MediumItalic.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-MediumItalic.a72c8bf5ca17d54a9ec6.ttf",
+    "static/media/BeVietnamPro-Italic.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-Italic.6bb07604f23903f8ad8a.ttf",
+    "static/media/BeVietnamPro-SemiBold.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-SemiBold.cc7c0b600271d95f3cdc.ttf",
+    "static/media/BeVietnamPro-Medium.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-Medium.89672411cd766deee35e.ttf",
+    "static/media/BeVietnamPro-SemiBoldItalic.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-SemiBoldItalic.e04812c69b61b84d7483.ttf",
+    "static/media/BeVietnamPro-Regular.ttf": "/MiguelBrunoSilva/Relat_Assist/static/media/BeVietnamPro-Regular.f7c1200a316323270e49.ttf",
+    "static/media/background_header.jpg": "/MiguelBrunoSilva/Relat_Assist/static/media/background_header.5dc9eb5b34be6acf5747.jpg",
+    "index.html": "/MiguelBrunoSilva/Relat_Assist/index.html",
+    "main.a2621d78.css.map": "/MiguelBrunoSilva/Relat_Assist/static/css/main.a2621d78.css.map",
+    "main.073f31da.js.map": "/MiguelBrunoSilva/Relat_Assist/static/js/main.073f31da.js.map",
+    "821.624b317d.chunk.js.map": "/MiguelBrunoSilva/Relat_Assist/static/js/821.624b317d.chunk.js.map",
+    "345.476cddfb.chunk.js.map": "/MiguelBrunoSilva/Relat_Assist/static/js/345.476cddfb.chunk.js.map",
+    "239.fa363147.chunk.js.map": "/MiguelBrunoSilva/Relat_Assist/static/js/239.fa363147.chunk.js.map",
+    "316.c14690de.chunk.js.map": "/MiguelBrunoSilva/Relat_Assist/static/js/316.c14690de.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a2621d78.css",
+    "static/js/main.073f31da.js"
+  ]
+}

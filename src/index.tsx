@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 // Components.
 import App from './app';
 
+// import BrowserRouter from 'react-router-dom/BrowserRouter'
+
 // fonts
 import './assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Regular.ttf';
 import './assets/fonts/Be_Vietnam_Pro/BeVietnamPro-Italic.ttf';
@@ -23,7 +25,9 @@ import { ReduxProvider } from './providers';
 ReactDOM.render(
   <StrictMode>
     <ReduxProvider>
-      <App />
+      {/* <BrowserRouter basename={process.env.PUBLIC_URL}> */}
+        <App />
+   {/* </BrowserRouter> */}
     </ReduxProvider>
   </StrictMode>,
   document.getElementById('root'),
