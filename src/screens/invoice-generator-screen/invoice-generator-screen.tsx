@@ -49,7 +49,7 @@ const InvoiceGeneratorScreen: FC = () => {
             {<InvoiceEditable />}
           </EditableProvider>
         </InvoicePaper>
-        <Box sx={{ ml: 4, flex: 1, position: 'relative' }}>
+        <Box sx={{ ml: 6, flex: 1, position: 'relative' }}>
           <InvoiceSettings />
           <InvoiceDownloadButton setInvoice={setInvoice} />
         </Box>

@@ -15,7 +15,7 @@ const InvoiceSettings: FC<Props> = ({ sx }) => {
       sx={{
         flex: 1,
         width: '100%',
-        minHeight: 300,
+        minHeight: 365,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'start',

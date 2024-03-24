@@ -137,6 +137,7 @@ const InvoiceEditable: FC = () => {
               <InvoiceSender from={invoice.sender} handleOpenDialog={onOpenDialogEditSender} />
             </Box> */}
             <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '20px' }}>
+            <SectionTitle>A preencher:</SectionTitle>
               <InvoiceCliente cliente={invoice.cliente} handleOpenDialog={onOpenDialogEditCliente} />
               <InvoiceEquipamento equipamento={invoice.equipamento} handleOpenDialog={onOpenDialogEditEquipamento} />
               <InvoiceValidacoes validacoes={invoice.validacoes} handleOpenDialog={onOpenDialogEditValidacoes} />

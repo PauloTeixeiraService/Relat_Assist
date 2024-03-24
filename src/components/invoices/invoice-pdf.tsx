@@ -33,7 +33,10 @@ import InvoiceSolicitacaoAssistencia from './invoice-solicitacaoAssistencia';
 import InvoiceServicosEfetuados from './invoice-servicosEfetuados';
 import InvoiceMateriais from './invoice-materiais';
 import InvoiceValidacoes from './invoice-validacoes';
-import { TextField } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
+import PDFData from '../base/pdf-data';
+import PDFDataBold from '../base/pdf-data-bold';
+import InvoiceLineItemDisplay from './invoice-line-item-display';
 
 interface Props {
   invoice: IInvoice;
@@ -99,6 +102,13 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
     return subTotal;
   }, [invoice.temposServico]);
 
+  const colStyles = {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  };
+
 
   return (
     <Document>
@@ -106,7 +116,9 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
         <Container>
           <InvoiceTitle title="COMPROVATIVO" />
           
-          <InvoiceInfo invoiceNumber='' date={invoice.date} />
+          <InvoiceTitle title=" " />
+          
+          {/* <InvoiceInfo invoiceNumber='' date={invoice.date} /> */}
           <br></br>
           <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '20px' }}>
             {/* <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginRight: '20px' }}>
@@ -114,17 +126,56 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <InvoiceSender from={invoice.sender} handleOpenDialog={onOpenDialogEditSender} />
             </Box> */}
             <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '20px' }}>
-              <InvoiceCliente cliente={invoice.cliente}/>
-              <InvoiceEquipamento equipamento={invoice.equipamento} />
-              <InvoiceValidacoes validacoes={invoice.validacoes}/>
-            
-            </Box>
-            
-            <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '20px' }}>
+              <br></br>
+              <SectionTitle>Cliente</SectionTitle>
+              <PDFDataBold>Nome: {invoice.cliente.nome}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>NIF: {invoice.cliente.NIF}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Morada: {invoice.cliente.morada}</PDFDataBold>
+              <br></br>
+
               
-              <InvoiceSolicitacaoAssistencia solicitacaoassistencia={invoice.solicitacaoAssistencia} />
-              <InvoiceMateriais materiais={invoice.materiais} />
-              <InvoiceServicosEfetuados servicosefetuados={invoice.servicosEfetuados} />
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Equipamento</SectionTitle>
+              <PDFDataBold>Tipologia: {invoice.equipamento.tipologia}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Marca: {invoice.equipamento.marca}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Modelo: {invoice.equipamento.modelo}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Matrícula: {invoice.equipamento.matrícula}</PDFDataBold>
+              <br></br>
+
+              
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Solicitação de Assistência</SectionTitle>
+              <PDFDataBold>Pedido realizado por via: {invoice.solicitacaoAssistencia.realizadoVia}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Nome do Requerente: {invoice.solicitacaoAssistencia.nomeRequerente}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Descrição do Pedido: {invoice.solicitacaoAssistencia.descricaoPedido}</PDFDataBold>
+              <br></br>
+
+              
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Serviços Efetuados</SectionTitle>
+              <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
+              <br></br>
+
+              
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Materiais</SectionTitle>
+              <PDFDataBold>Material Aplicado: {invoice.materiais.materialAplicado}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Material para orçamentar: {invoice.materiais.materialParaOrcamentar}</PDFDataBold>
+              <br></br>
+
+            
             </Box>
             
             <br></br>
@@ -140,14 +191,30 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               invoice.temposServico.length > 0 &&
               // Render invoice items
               invoice.temposServico.map((tempo, index) => (
-                <InvoiceLineItem
-                  key={String(index)}
-                  index={index}
-                  item={tempo}
-                  lastItem={invoice.temposServico.length - 1 === index}
+
+                <InvoiceLineItemDisplay 
+                index={index}
+                item={tempo}
                 />
-                // <a></a>
+                
+                // <PDFDataBold>{tempo.nota} - {new Date(tempo.inicio).toLocaleDateString("en-gb")} - {new Date(tempo.fim).toLocaleDateString("en-gb")}</PDFDataBold>
+                
               ))}
+
+{/*               
+            {Array.isArray(invoice.temposServico) &&
+              invoice.temposServico.length > 0 &&
+              // Render invoice items
+              invoice.temposServico.map((tempo, index) => (
+
+                // <InvoiceLineItemDisplay 
+                // index={index}
+                // item={tempo}
+                // />
+                
+                <PDFDataBold>{tempo.nota} - {new Date(tempo.inicio).toLocaleDateString("en-gb")} - {new Date(tempo.fim).toLocaleDateString("en-gb")}</PDFDataBold>
+                
+              ))} */}
           </Box>
 
            {/* Invoice Summary & Payment Info */}
@@ -169,7 +236,8 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
           <Box style={{ marginBottom: '16px' }}>
             <hr></hr>
             <br></br>
-            <SectionTitle>Observações: {invoice.observacoes}</SectionTitle>
+            <SectionTitle>Observações:</SectionTitle>            
+            <PDFDataBold>{invoice.observacoes}</PDFDataBold>
             <br></br>
             </Box>
           </Container> 

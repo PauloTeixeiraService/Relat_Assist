@@ -30,6 +30,11 @@ import { ISetInvoice } from '../../store/invoice/invoice-actions';
 import { useInvoice } from '../../hooks';
 import { ArrowDownward } from '@mui/icons-material';
 import { wait } from '@testing-library/user-event/dist/utils';
+import axios from 'axios';
+import SaveIcon from '@mui/icons-material/Save';
+
+// const nodemailer = require("nodemailer");
+
 
 interface PdfDocumentProps {
   invoice: IInvoice;
@@ -57,6 +62,33 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
       </Document>
     ),
   });
+
+  // const send= async()=>{
+
+  //   fetch(String(pdfInstance.url), {
+  //     method: 'GET',
+  //     headers: { 'Content-Type': pdfInstance.blob?.type || 'application/pdf' },
+  //   })
+  //     .then((response) => response.blob())
+  //     .then((blob) => {
+
+  //       let formData = new FormData();
+  //       // let fileName = `${blob.name}.${blob.extension}`;
+  //       let file = new File([blob], "test.pdf");
+  //       formData.append('file', file, "test.pdf");
+
+  //       axios.post("http://localhost:8000/sendPdf",        
+  //           formData, {
+  //             headers: {
+  //               'Content-Type': `multipart/form-data`,
+  //             },
+  //           }).then(response=>{
+  //                 console.log(response);
+  //                 alert(response.data)
+  //               })
+              
+  //   })
+  // }
  
   useEffect(() => {
     const intervalAutoSaveInvoice = setInterval(() => {
@@ -65,6 +97,13 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
     }, 2000);
     return () => clearInterval(intervalAutoSaveInvoice);
   }, [invoice]);
+
+  const guardar = (): void => {    
+
+    setInvoice(invoice);
+
+    updatePdfInstance(<PdfDocument invoice={invoice} />);
+  }
 
   const handleDownloadPdf = (): void => {    
 
@@ -119,12 +158,46 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
         justifyContent: 'start',
         flexDirection: 'column',        
         // zIndex: 2,
-        top: -BUTTON_SIZE-100,
+        top: -BUTTON_SIZE-170,
         }}
       >
         {!pdfInstance.error ? (
           !pdfInstance.loading && (
             <div>
+            <IconButton
+              sx={{
+                backgroundColor: '#7fa91b',
+                border: '3px solid #fff',
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: `${BUTTON_SIZE}px`,
+                transition: (theme) => theme.transitions.create(['width']),
+                textAlign: 'center',
+                overflow: 'hidden',
+                '& .MuiTypography-root': {
+                  transform: 'translateX(150px)',
+                  transition: (theme) => theme.transitions.create(['transform', 'width']),
+                  fontSize: 0,
+                },
+                '&:hover': {
+                  backgroundColor: '#7fa91b',
+                  width: 180,
+                  '& .MuiTypography-root': {
+                    transform: 'translateX(0px)',
+                    fontSize: 13,
+                  },
+                  '& svg': {
+                    mr: 2,
+                  },
+                },
+              }}
+              onClick={guardar}
+            >
+              <SaveIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
+              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Guardar</Typography>
+            </IconButton>
+            <br></br>
+            <br></br>
             <IconButton
               sx={{
                 backgroundColor: 'secondary.main',
@@ -161,7 +234,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
             <br></br>
             <IconButton
               sx={{
-                backgroundColor: '#7fa91b',
+                backgroundColor: '#a91b38',
                 border: '3px solid #fff',
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
@@ -175,7 +248,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                   fontSize: 0,
                 },
                 '&:hover': {
-                  backgroundColor: '#7fa91b',
+                  backgroundColor: '#a91b38',
                   width: 180,
                   '& .MuiTypography-root': {
                     transform: 'translateX(0px)',

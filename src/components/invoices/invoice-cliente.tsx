@@ -38,7 +38,7 @@ const InvoiceCliente: FC<Props> = ({ cliente, handleOpenDialog }) => {
   return (
     <EditableAreaWrapper>
       <Box style={{ position: 'relative', zIndex: 1 }} onClick={handleOpenDialog as () => void}>
-        <SectionTitle>A preencher:</SectionTitle>
+        
         {hasCliente() ? (
           <>
             {cliente.nome && (
