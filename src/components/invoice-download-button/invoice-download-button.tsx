@@ -152,7 +152,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
     <generatorContext.Provider value={{ editable: false, debug: true }}>
       <Box
         sx={{
-          ml: 0, flex: 1, position: 'relative',
+          ml: -3, flex: 1, position: 'relative',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'start',

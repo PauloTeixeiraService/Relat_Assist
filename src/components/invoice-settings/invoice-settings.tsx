@@ -14,7 +14,7 @@ const InvoiceSettings: FC<Props> = ({ sx }) => {
     <Paper
       sx={{
         flex: 1,
-        width: '100%',
+        width: '95%',
         minHeight: 365,
         display: 'flex',
         alignItems: 'center',
