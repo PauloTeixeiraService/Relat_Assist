@@ -7,11 +7,11 @@ import type { RouteObject } from 'react-router-dom';
 // Routes object.
 const routes = (): Array<RouteObject> => [
   {
-    path: '/MiguelBrunoSilva/Relat_Assist/',
+    path: '/',
     element: <HomeScreen />,
   },
   {
-    path: '/MiguelBrunoSilva/Relat_Assist/generator',
+    path: '/generator',
     element: <InvoiceGeneratorScreen />,
   },
 ];

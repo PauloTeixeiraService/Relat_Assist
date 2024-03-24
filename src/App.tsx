@@ -17,7 +17,7 @@ const App: FC = () => {
   const { invoice_data } = useAppSelector((state) => state.invoice);
   return (
     <ThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <LocalizationProvider>
           <InvoiceProvider value={invoice_data}>
             <AppRoutes />
