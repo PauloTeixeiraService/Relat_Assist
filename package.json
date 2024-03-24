@@ -2,7 +2,7 @@
   "name": "assistance_report",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://MiguelBrunoSilva.github.io/Relat_Assist",
+  "homepage": "https://PauloTeixeiraService.github.io/Relat_Assist",
   "dependencies": {
     "@date-io/date-fns": "^2.14.0",
     "@emotion/react": "^11.9.0",
