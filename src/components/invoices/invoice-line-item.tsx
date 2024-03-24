@@ -22,7 +22,23 @@ import { useInvoice } from '../../hooks';
 
 // Utils
 import { calculateAmount } from '../../utils/invoice';
-import { IInvoiceLineItem2 } from '@/interfaces/invoice';
+import { ITempo } from '@/interfaces/tempo';
+import EditableDatePicker from '../base/editable-date-picker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { TextField } from '@mui/material';
+import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+import 'dayjs/locale/en-gb';
+
+
+// dayjs.extend(utc);
+// dayjs.extend(timezone);
 
 // Styles.
 const colStyles = {
@@ -37,30 +53,42 @@ const textStyles = {
 };
 
 interface Props {
-  item: IInvoiceLineItem2;
+  item: ITempo;
   index: number;
   lastItem: boolean;
-  onChange: (index: number, property: keyof IInvoiceLineItem2, value: string) => void;
-  dispatchAlert: (item: IInvoiceLineItem2) => void;
+  onChange?: (index: number, property: keyof ITempo, value: Date|string) => void;
+  dispatchAlert?: (item: ITempo) => void;
 }
 
 const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatchAlert }) => {
   const { editable } = useGenerator();
   const { remove } = useInvoice();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    onChange(index, e.target.name as keyof IInvoiceLineItem2, e.target.value);
+  const handleChange1 = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    if(onChange != undefined) onChange(index, e.target.name as keyof ITempo, e.target.value);
   };
+  
+  const handleChangeInicio = (d: string | null): void => {
+    console.log(d)
+    if(d != undefined && onChange != undefined)   onChange(index, "inicio" as keyof ITempo, new Date(d));
+  };
+
+  const handleChangeFim = (d: string | null): void => {
+    console.log(d)
+    if(d != undefined && onChange != undefined)   onChange(index, "fim" as keyof ITempo, new Date(d));
+  };
+     
 
   /**
    * Handle remove item.
    */
-  const handleRemoveItem = (): void => {
+  const handleRemoveItem = (): void => { 
     remove(index);
-    dispatchAlert(item);
+    if(dispatchAlert != undefined) dispatchAlert(item);
   };
 
   return (
+    
     <Box
       style={{
         width: '100%',
@@ -78,31 +106,34 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
           },
         },
       }}
-    >
-      <Box style={{ width: '55%', ...colStyles }}>
+    > 
+    {/* <LocalizationProvider dateAdapter={AdapterLuxon} adapterLocale='de'> */}
+      
+      
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
+      <Box style={{ width: '40%', ...colStyles }}>
         <EditableText
-          name="description"
+          name="nota"
           multiline
           minRows={1}
           maxRows={3}
-          value={item.description}
-          onChange={handleChange}
+          value={item.nota}
+          onChange={handleChange1}
         />
       </Box>
-      <Box style={{ width: '10%', ...colStyles }}>
-        <EditableText
-          style={{ ...textStyles }}
-          type="number"
-          name="quantity"
-          value={item.quantity}
-          onChange={handleChange}
-        />
+      <Box style={{ width: '30%', ...colStyles }}>
+        <DesktopDateTimePicker
+          value={item.inicio}         
+          ampm={false}
+          onChange={(newValue) => handleChangeInicio(newValue)}
+        /> 
       </Box>
-      <Box style={{ width: '15%', ...colStyles }}>
-        <EditableText style={{ ...textStyles }} type="number" name="rate" value={item.rate} onChange={handleChange} />
-      </Box>
-      <Box style={{ width: '20%', ...colStyles }}>
-        <Typography style={{ ...textStyles }}>{calculateAmount(item.quantity, item.rate)}</Typography>
+      <Box style={{ width: '30%', ...colStyles }}>
+      <DesktopDateTimePicker
+          value={item.fim}         
+          ampm={false}
+          onChange={(newValue) => handleChangeFim(newValue)}
+        /> 
       </Box>
 
       {editable && (
@@ -138,12 +169,13 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
                 sx={{ transform: 'scale(0)', display: 'none', textTransform: 'capitalize', ml: 0.5 }}
                 variant="subtitle2"
               >
-                Remove
+                Remover
               </MuiTypography>
             </>
           </Tooltip>
         </Fab>
       )}
+      </LocalizationProvider>
     </Box>
   );
 };

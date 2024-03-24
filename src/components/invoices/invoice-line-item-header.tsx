@@ -38,26 +38,22 @@ const InvoiceItemHeader: FC = () => {
       }}
     >
       <>
-        <Box style={{ width: '55%', ...colStyles }}>
+        <Box style={{ width: '40%', ...colStyles }}>
           <Typography
             style={{
               fontWeight: 600,
             }}
           >
-            {'Item Description'}
+            {'Apontamentos do Serviço'}
           </Typography>
         </Box>
-        <Box style={{ width: '10%', ...colStyles }}>
+        <Box style={{ width: '30%', ...colStyles }}>
           {renderDivider}
-          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Qty'}</Typography>
+          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Início'}</Typography>
         </Box>
-        <Box style={{ width: '15%', ...colStyles }}>
+        <Box style={{ width: '30%', ...colStyles }}>
           {renderDivider}
-          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Rate'}</Typography>
-        </Box>
-        <Box style={{ width: '20%', ...colStyles }}>
-          {renderDivider}
-          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Amount'}</Typography>
+          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Fim'}</Typography>
         </Box>
       </>
     </Box>

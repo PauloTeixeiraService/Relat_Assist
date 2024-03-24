@@ -10,6 +10,11 @@ import { useInvoice } from '../../hooks';
 
 // Date fns
 import { format } from 'date-fns';
+import { DateField, DesktopDatePicker, DesktopDateTimePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
+import 'dayjs/locale/en-gb';
 
 // Styles.
 const lineStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' };
@@ -18,10 +23,9 @@ const textStyle = { fontWeight: 600 };
 interface Props {
   invoiceNumber: string;
   date: string;
-  due: string;
 }
 
-const InvoiceInfo: FC<Props> = ({ invoiceNumber, date, due }) => {
+const InvoiceInfo: FC<Props> = ({ invoiceNumber, date }) => {
   const { editable } = useGenerator();
 
   const { invoice, setInvoice } = useInvoice();
@@ -30,36 +34,37 @@ const InvoiceInfo: FC<Props> = ({ invoiceNumber, date, due }) => {
     setInvoice({ ...invoice, [e.target.name]: e.target.value });
   };
 
-  const onChangeDate = (property: 'date' | 'due', value: string): void => {
-    setInvoice({ ...invoice, [property]: value });
+  // const onChangeDate = (e: ChangeEvent<HTMLInputElement>): void => {
+  //   setInvoice({ ...invoice, ['date']: new Date(e.target.value).toString() });
+  // };
+
+  const onChangeDate = (d: string | null): void => {
+    if(d!=null) setInvoice({ ...invoice, ['date']: d });
   };
+
+  // const onChangeDate = (property: 'date' | 'due', value: string): void => {
+  //   setInvoice({ ...invoice, [property]: value });
+  // };
 
   return (
     <Box style={{ backgroundColor: '#F7FBFF', borderRadius: 3, padding: editable ? '16px 20px' : '12px 16px' }}>
-      <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
-        <Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}>Invoice No :</Typography>
-        {editable ? (
-          <EditableText name="invoiceNumber" value={invoiceNumber} onChange={onChangeInvoiceNumber} />
-        ) : (
-          <Typography>{invoiceNumber}</Typography>
-        )}
-      </Box>
-      <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
+      
+      {/* <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
         <Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}>Invoice Date :</Typography>
         {editable ? (
-          <EditableDatePicker label="Date" name="date" value={invoice.date} onChange={onChangeDate} />
-        ) : (
-          <Typography>{format(new Date(date), 'dd/MM/yyyy')}</Typography>
+          
+          // <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
+          <DesktopDatePicker
+            value={new Date(date)}   
+            format='dd/MM/yyyy'      
+            slotProps={{ textField: { variant: 'standard', InputProps: { disableUnderline: true },} }}
+            onChange={(newValue) => onChangeDate(newValue!=null ? newValue.toString(): '')}
+          /> 
+          // </LocalizationProvider>
+        ):(
+          <a></a>
         )}
-      </Box>
-      <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
-        <Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}>Due Date :</Typography>
-        {editable ? (
-          <EditableDatePicker label="Due date" name="due" value={String(invoice.due)} onChange={onChangeDate} />
-        ) : (
-          <Typography>{format(new Date(due), 'dd/MM/yyyy')}</Typography>
-        )}
-      </Box>
+      </Box> */}
     </Box>
   );
 };

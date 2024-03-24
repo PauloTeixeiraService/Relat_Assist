@@ -24,9 +24,9 @@ const AddInvoiceItem: FC = () => {
 
   const handleAddNewLine = (): void => {
     append({
-      description: '',
-      quantity: '1',
-      rate: '0',
+      nota: '',
+      inicio: '',
+      fim: ''
     });
   };
 
@@ -57,7 +57,7 @@ const AddInvoiceItem: FC = () => {
           }}
         >
           <AddIcon sx={{ fontSize: 20, mr: 1 }} />
-          <Typography fontWeight="bold">Add new row</Typography>
+          <Typography fontWeight="bold">Adicionar novo tempo</Typography>
         </Box>
       </Tooltip>
     );

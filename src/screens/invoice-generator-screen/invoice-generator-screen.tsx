@@ -50,8 +50,8 @@ const InvoiceGeneratorScreen: FC = () => {
           </EditableProvider>
         </InvoicePaper>
         <Box sx={{ ml: 4, flex: 1, position: 'relative' }}>
-          <InvoiceDownloadButton setInvoice={setInvoice} />
           <InvoiceSettings />
+          <InvoiceDownloadButton setInvoice={setInvoice} />
         </Box>
       </Box>
     </Layout>

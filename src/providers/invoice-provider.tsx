@@ -15,7 +15,7 @@ interface ProviderProps {
  * Invoice Context Provider.
  */
 const InvoiceProvider: FC<ProviderProps> = ({ children, value }) => {
-  const [invoice, setInvoice] = useState<IInvoice>(value || initialInvoiceData);
+  const [invoice, setInvoice] = useState<IInvoice>(initialInvoiceData);
   return <invoiceContext.Provider value={{ invoice, setInvoice }}>{children}</invoiceContext.Provider>;
 };
 

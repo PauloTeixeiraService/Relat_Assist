@@ -1,35 +1,23 @@
-import { ICompany } from './company';
-import { IPerson } from './person';
+import { ICliente } from './cliente';
+import { IEquipamento } from './equipamento';
+import { ISolicitaoAssistencia } from './solicitacaoAssistencia';
+import { IServicosEfetuados } from './servicosEfetuados';
+import { IMateriais } from './materiais';
+import { ITemposServico } from './temposServico';
+import { IValidacoes } from './validacoes';
 
-export interface IInvoiceRecipient extends IPerson, ICompany {}
-
-export interface IInvoiceSender extends IPerson, ICompany {}
-
-export interface IInvoiceLineItem2 {
-  description: string;
-  quantity: string;
-  rate: string;
-  tax?: string;
-}
-
-export interface IInvoicePaymentInfo {
-  accountName?: string;
-  accountNumber?: string;
-  bankAccount?: string;
-}
 
 export interface IInvoice {
   fileName?: string;
   logo?: string;
-  sender: IInvoiceSender;
-  recipient: IInvoiceRecipient;
-  invoiceNumber: string;
+  prestador: ICliente;
+  cliente: ICliente;
   date: string;
-  due?: string;
-  items: Array<IInvoiceLineItem2>;
-  taxRate?: number;
-  terms?: string;
-  notes?: string;
-  footerMessages?: string;
-  paymentInfo?: IInvoicePaymentInfo;
+  equipamento: IEquipamento;
+  solicitacaoAssistencia: ISolicitaoAssistencia;
+  servicosEfetuados: IServicosEfetuados;
+  materiais: IMateriais;
+  temposServico: ITemposServico;
+  observacoes: string;
+  validacoes: IValidacoes;
 }

@@ -5,7 +5,7 @@ import MuiBox from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 // Mui icons.
-import UploadFileIcon from '@mui/icons-material/UploadFile';
+// import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 // React Pdf.
 import { Image } from '@react-pdf/renderer';
@@ -109,7 +109,7 @@ const InvoiceCompanyLogo: FC<Props> = ({ logo, onUploadImage }) => {
                 className="choose-image"
                 sx={{ display: 'inline-flex', alignItems: 'center', flexDirection: 'column', justifyContent: 'center' }}
               >
-                <UploadFileIcon sx={{ fontSize: 32, mb: 1.5 }} />
+                {/* <UploadFileIcon sx={{ fontSize: 32, mb: 1.5 }} /> */}
                 <Typography>Upload Image</Typography>
               </MuiBox>
               <MuiBox component="img" src={logo} sx={{ width: '100%' }} alt="Invoice logo" />
@@ -117,7 +117,7 @@ const InvoiceCompanyLogo: FC<Props> = ({ logo, onUploadImage }) => {
           </Placeholder>
         ) : (
           <Placeholder hasLogo={false}>
-            <UploadFileIcon sx={{ fontSize: 32, mb: 1.5 }} />
+            {/* <UploadFileIcon sx={{ fontSize: 32, mb: 1.5 }} /> */}
             <Typography>Upload Image</Typography>
           </Placeholder>
         )}

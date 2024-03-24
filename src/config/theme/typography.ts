@@ -2,13 +2,13 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
 // Default font family
-export const fontFamily = [
-  'Be Vietnam Pro, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-].join(', ');
+// export const fontFamily = [
+//   'Be Vietnam Pro, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+// ].join(', ');
 
 // Custom theme typography.
 const typography: TypographyOptions = {
-  fontFamily,
+  // fontFamily,
   fontWeightLight: 300,
   fontWeightRegular: 400,
   fontWeightMedium: 500,

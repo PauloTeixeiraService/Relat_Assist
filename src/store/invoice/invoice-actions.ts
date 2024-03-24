@@ -1,7 +1,7 @@
 // Enum action types.
 import { IInvoice } from '../../interfaces/invoice';
 import { InvoiceActionTypes as Types } from './invoice-actions.enum';
-import type { IPayloadSetInvoiceLineItem } from './invoice.interfaces';
+import type { IPayloadSetInvoiceTempo } from './invoice.interfaces';
 
 // Actions definitions.
 export interface ISetInvoice {
@@ -9,22 +9,43 @@ export interface ISetInvoice {
   payload: IInvoice;
 }
 
-interface ISetIInvoiceLineItem {
-  type: typeof Types.invoice_SET_INVOICE_LINE_ITEM;
-  payload: IPayloadSetInvoiceLineItem;
+interface ISetIInvoiceTempo {
+  type: typeof Types.invoice_SET_TEMPO;
+  payload: IPayloadSetInvoiceTempo;
 }
 
-interface ISetDialogEditRecipient {
-  type: typeof Types.invoice_SET_DIALOG_RECIPIENT;
+interface ISetDialogEditCliente {
+  type: typeof Types.invoice_SET_DIALOG_CLIENTE;
   payload: boolean;
 }
-interface ISetDialogSender {
-  type: typeof Types.invoice_SET_DIALOG_SENDER;
+
+interface ISetDialogEditEquipamento {
+  type: typeof Types.invoice_SET_DIALOG_EQUIPAMENTO;
+  payload: boolean;
+}
+
+interface ISetDialogEditMateriais {
+  type: typeof Types.invoice_SET_DIALOG_MATERIAIS;
+  payload: boolean;
+}
+
+interface ISetDialogEditServicosEfetuados {
+  type: typeof Types.invoice_SET_DIALOG_SERVICOS_EFETUADOS;
+  payload: boolean;
+}
+
+interface ISetDialogEditSolicitacaoAssistencia {
+  type: typeof Types.invoice_SET_DIALOG_SOLICITACAO_ASSISTENCIA;
+  payload: boolean;
+}
+
+interface ISetDialogEditValidacoes {
+  type: typeof Types.invoice_SET_DIALOG_VALIDACOES;
   payload: boolean;
 }
 
 // Union actions type.
-export type InvoiceActions = ISetInvoice | ISetIInvoiceLineItem | ISetDialogEditRecipient | ISetDialogSender;
+export type InvoiceActions = ISetInvoice | ISetIInvoiceTempo | ISetDialogEditCliente | ISetDialogEditEquipamento | ISetDialogEditMateriais | ISetDialogEditServicosEfetuados | ISetDialogEditSolicitacaoAssistencia | ISetDialogEditValidacoes;
 
 // Actions creator.
 export const invoice_setInvoice = (payload: IInvoice): ISetInvoice => ({
@@ -32,17 +53,40 @@ export const invoice_setInvoice = (payload: IInvoice): ISetInvoice => ({
   payload,
 });
 
-export const invoice_setInvoiceLineItem = (payload: IPayloadSetInvoiceLineItem): ISetIInvoiceLineItem => ({
-  type: Types.invoice_SET_INVOICE_LINE_ITEM,
+export const ISetIInvoiceTempo = (payload: IPayloadSetInvoiceTempo): ISetIInvoiceTempo => ({
+  type: Types.invoice_SET_TEMPO,
   payload,
 });
 
-export const invoice_setDialogRecipient = (payload: boolean): ISetDialogEditRecipient => ({
-  type: Types.invoice_SET_DIALOG_RECIPIENT,
+export const invoice_setDialogCliente = (payload: boolean): ISetDialogEditCliente => ({
+  type: Types.invoice_SET_DIALOG_CLIENTE,
   payload,
 });
 
-export const invoice_setDialogSender = (payload: boolean): ISetDialogSender => ({
-  type: Types.invoice_SET_DIALOG_SENDER,
+export const invoice_setDialogEquipamento = (payload: boolean): ISetDialogEditEquipamento => ({
+  type: Types.invoice_SET_DIALOG_EQUIPAMENTO,
   payload,
 });
+
+export const invoice_setDialogMateriais = (payload: boolean): ISetDialogEditMateriais => ({
+  type: Types.invoice_SET_DIALOG_MATERIAIS,
+  payload,
+});
+
+export const invoice_setDialogServicosEfetuados = (payload: boolean): ISetDialogEditServicosEfetuados => ({
+  type: Types.invoice_SET_DIALOG_SERVICOS_EFETUADOS,
+  payload,
+});
+
+export const invoice_setDialogSolicitacaoAssistencia = (payload: boolean): ISetDialogEditSolicitacaoAssistencia => ({
+  type: Types.invoice_SET_DIALOG_SOLICITACAO_ASSISTENCIA,
+  payload,
+});
+
+export const invoice_setDialogValidacoes = (payload: boolean): ISetDialogEditValidacoes => ({
+  type: Types.invoice_SET_DIALOG_VALIDACOES,
+  payload,
+});
+
+
+

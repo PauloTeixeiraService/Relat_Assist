@@ -10,7 +10,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 // Mui styles.
 import { styled } from '@mui/material/styles';
 
-// Hooks.
+// Hooks. 
 import { useGenerator } from '../../hooks/useGenerator';
 
 // Utilities.

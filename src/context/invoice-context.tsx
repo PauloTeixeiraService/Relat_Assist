@@ -13,44 +13,45 @@ export interface IInvoiceContext {
 /** Initial state */
 export const initialInvoiceData: IInvoice = {
   fileName: '',
-  invoiceNumber: '#INV123',
   date: String(new Date()),
-  due: String(new Date()),
-  sender: {
-    companyName: '',
-    firstName: '',
-    lastName: '',
-    country: '',
-    addressLine1: '',
-    addressLine2: '',
-    state: '',
-    city: '',
-    phone: '',
-    email: '',
+  prestador: {
+    nome: 'Paulo Teixeira',
+    morada:  ' -a preencher- ',
+    NIF: ' -a preencher- '
   },
-  recipient: {
-    companyName: '',
-    firstName: '',
-    addressLine1: '',
-    addressLine2: '',
-    city: '',
-    state: '',
-    country: '',
-    postalCode: '',
-    phone: '',
-    email: '',
+  cliente: {
+    nome: '',
+    morada:  '',
+    NIF: ''
+  },  
+  equipamento: {    
+    tipologia: '',
+    marca: '',
+    modelo: '',
+    matrícula: ''
   },
-  items: [],
-  taxRate: 10,
-  terms:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  notes: '',
-  footerMessages: 'Thank you for your business!',
-  paymentInfo: {
-    accountName: '',
-    accountNumber: '',
-    bankAccount: '',
+  solicitacaoAssistencia: {
+    realizadoVia: '',
+    nomeRequerente: '',
+    descricaoPedido: ''
   },
+  servicosEfetuados: {
+    descricaoServico: '',
+    permanecemServicosPendentes: '',
+    maquinaOperacional: ''
+  },
+  materiais: {
+    materialAplicado: '',
+    materialParaOrcamentar: ''
+  },
+  temposServico: [],
+  observacoes: '',
+  validacoes: {
+    nomePessoa: '',
+    validadoEm: ''
+  }
+
+
 };
 
 /**

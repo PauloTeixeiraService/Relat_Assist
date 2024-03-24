@@ -1,7 +1,7 @@
-import { IInvoiceLineItem2 } from '../../interfaces/invoice';
+import { ITempo } from "@/interfaces/tempo";
 
-export interface IPayloadSetInvoiceLineItem {
+export interface IPayloadSetInvoiceTempo {
   index: number;
-  property: keyof IInvoiceLineItem2;
+  property: keyof ITempo;
   value: string;
 }

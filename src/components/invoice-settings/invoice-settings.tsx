@@ -18,13 +18,15 @@ const InvoiceSettings: FC<Props> = ({ sx }) => {
         minHeight: 300,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'start',
         flexDirection: 'column',
         ...sx,
       }}
     >
+      <br></br>
+      <br></br>
       <ConstructionIcon sx={{ color: 'text.disabled', fontSize: 42, mb: 2 }} />
-      <Typography sx={{ color: 'text.disabled', fontSize: 16 }}>Invoice Settings</Typography>
+      <Typography sx={{ color: 'text.disabled', fontSize: 16 }}>Opções</Typography>
     </Paper>
   );
 };

@@ -12,16 +12,24 @@ import { IInvoice } from '../../interfaces/invoice';
 export interface IInvoiceState {
   invoice_isLoadingPreview: boolean;
   invoice_data: IInvoice;
-  invoice_openDialogRecipient: boolean;
-  invoice_openDialogSender: boolean;
+  invoice_openDialogCliente: boolean;
+  invoice_openDialogEquipamento: boolean;
+  invoice_openDialogMateriais: boolean;
+  invoice_openDialogSolicitacaoAssistencia: boolean;
+  invoice_openDialogServicosEfetuados: boolean;
+  invoice_openDialogValidacoes: boolean;
 }
 
 // Init state.
 const initialState: IInvoiceState = {
   invoice_isLoadingPreview: false,
   invoice_data: initialInvoiceData,
-  invoice_openDialogRecipient: false,
-  invoice_openDialogSender: false,
+  invoice_openDialogCliente: false,
+  invoice_openDialogEquipamento: false,
+  invoice_openDialogMateriais: false,
+  invoice_openDialogSolicitacaoAssistencia: false,
+  invoice_openDialogServicosEfetuados: false,
+  invoice_openDialogValidacoes: false,
 };
 
 // Invoice state reducer.
@@ -32,15 +40,35 @@ const invoiceReducer = (state: IInvoiceState = initialState, { type, payload }: 
         ...state,
         invoice_data: payload,
       };
-    case Types.invoice_SET_DIALOG_RECIPIENT:
+    case Types.invoice_SET_DIALOG_CLIENTE:
       return {
         ...state,
-        invoice_openDialogRecipient: payload,
+        invoice_openDialogCliente: payload,
       };
-    case Types.invoice_SET_DIALOG_SENDER:
+    case Types.invoice_SET_DIALOG_EQUIPAMENTO:
       return {
         ...state,
-        invoice_openDialogSender: payload,
+        invoice_openDialogEquipamento: payload,
+      };
+    case Types.invoice_SET_DIALOG_MATERIAIS:
+      return {
+        ...state,
+        invoice_openDialogMateriais: payload,
+      };
+    case Types.invoice_SET_DIALOG_SERVICOS_EFETUADOS:
+      return {
+        ...state,
+        invoice_openDialogServicosEfetuados: payload,
+      };
+    case Types.invoice_SET_DIALOG_SOLICITACAO_ASSISTENCIA:
+      return {
+        ...state,
+        invoice_openDialogSolicitacaoAssistencia: payload,
+      };
+    case Types.invoice_SET_DIALOG_VALIDACOES:
+      return {
+        ...state,
+        invoice_openDialogValidacoes: payload,
       };
     default:
       return state;

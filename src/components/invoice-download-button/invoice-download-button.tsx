@@ -18,6 +18,7 @@ import { InvoicePdf } from '../invoices';
 
 /** Mui icons. */
 import DownloadIcon from '@mui/icons-material/Download';
+import SendIcon from '@mui/icons-material/Send';
 import CloseIcon from '@mui/icons-material/Close';
 
 // date fns
@@ -28,6 +29,7 @@ import { IInvoice } from '../../interfaces/invoice';
 import { ISetInvoice } from '../../store/invoice/invoice-actions';
 import { useInvoice } from '../../hooks';
 import { ArrowDownward } from '@mui/icons-material';
+import { wait } from '@testing-library/user-event/dist/utils';
 
 interface PdfDocumentProps {
   invoice: IInvoice;
@@ -55,19 +57,24 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
       </Document>
     ),
   });
-
+ 
   useEffect(() => {
     const intervalAutoSaveInvoice = setInterval(() => {
       setInvoice(invoice);
-      // updatePdfInstance(invoice);
+      updatePdfInstance(<PdfDocument invoice={invoice} />);
     }, 2000);
     return () => clearInterval(intervalAutoSaveInvoice);
   }, [invoice]);
 
-  const handleDownloadPdf = (): void => {
+  const handleDownloadPdf = (): void => {    
+
     setInvoice(invoice);
 
-    // updatePdfInstance();
+    wait(5000);
+
+    updatePdfInstance(<PdfDocument invoice={invoice} />);
+
+    wait(5000);
 
     fetch(String(pdfInstance.url), {
       method: 'GET',
@@ -106,16 +113,18 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
     <generatorContext.Provider value={{ editable: false, debug: true }}>
       <Box
         sx={{
-          position: 'absolute',
-          zIndex: 2,
-          display: 'flex',
-          alignItems: 'center',
-          top: -BUTTON_SIZE / 2,
-          left: BUTTON_SIZE / 2,
+          ml: 0, flex: 1, position: 'relative',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'start',
+        flexDirection: 'column',        
+        // zIndex: 2,
+        top: -BUTTON_SIZE-100,
         }}
       >
         {!pdfInstance.error ? (
           !pdfInstance.loading && (
+            <div>
             <IconButton
               sx={{
                 backgroundColor: 'secondary.main',
@@ -148,10 +157,47 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
               <DownloadIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
               <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Download PDF</Typography>
             </IconButton>
+            <br></br>
+            <br></br>
+            <IconButton
+              sx={{
+                backgroundColor: '#7fa91b',
+                border: '3px solid #fff',
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: `${BUTTON_SIZE}px`,
+                transition: (theme) => theme.transitions.create(['width']),
+                textAlign: 'center',
+                overflow: 'hidden',
+                '& .MuiTypography-root': {
+                  transform: 'translateX(150px)',
+                  transition: (theme) => theme.transitions.create(['transform', 'width']),
+                  fontSize: 0,
+                },
+                '&:hover': {
+                  backgroundColor: '#7fa91b',
+                  width: 180,
+                  '& .MuiTypography-root': {
+                    transform: 'translateX(0px)',
+                    fontSize: 13,
+                  },
+                  '& svg': {
+                    mr: 2,
+                  },
+                },
+              }}
+              onClick={handleDownloadPdf}
+            >
+              <SendIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
+              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Enviar Registo</Typography>
+            </IconButton>
+            </div>
           )
         ) : (
           <Button color="error" startIcon={<CloseIcon />}>
-            Error
+            Erro 
+            <br></br>
+            {pdfInstance.error.toString()}
           </Button>
         )}
       </Box>

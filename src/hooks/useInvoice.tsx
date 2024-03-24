@@ -1,19 +1,30 @@
 import { Dispatch, SetStateAction, useContext } from 'react';
 import { IInvoiceContext, invoiceContext, initialInvoiceData } from '../context/invoice-context';
-import { IInvoice, IInvoiceLineItem2, IInvoiceRecipient, IInvoiceSender } from '../interfaces/invoice';
+import { IInvoice } from '../interfaces/invoice';
+import { ITempo } from '@/interfaces/tempo';
+import { ICliente } from '@/interfaces/cliente';
+import { IEquipamento } from '@/interfaces/equipamento';
+import { IMateriais } from '@/interfaces/materiais';
+import { IServicosEfetuados } from '@/interfaces/servicosEfetuados';
+import { ISolicitaoAssistencia } from '@/interfaces/solicitacaoAssistencia';
+import { ITemposServico } from '@/interfaces/temposServico';
+import { IValidacoes } from '@/interfaces/validacoes';
 
 interface UseInvoiceHookReturn extends IInvoiceContext {
   reset: () => void;
-  handleChangeLineItem: (index: number, property: keyof IInvoiceLineItem2, value: string) => void;
-  append: (newLineItem: IInvoiceLineItem2) => void;
+  handleChangeTempo: (index: number, property: keyof ITempo, value: Date|string ) => void;
+  append: (newTempo: ITempo) => void;
   remove: (index: number) => void;
-  updateRecipient: (recipient: IInvoiceRecipient) => void;
-  updateSender: (sender: IInvoiceSender) => void;
-  updateTaxRate: (taxRate: number) => void;
-  updateLogo: (logo?: string) => void;
+  updateCliente: (recipient: ICliente) => void;
+  updateEquipamento: (equipamento: IEquipamento) => void;
+  updateMateriais: (materiais: IMateriais) => void;
+  updateServicosEfetuados: (servicosEfetuados: IServicosEfetuados) => void;
+  updateSolicitacaoAssistencia: (solicitacaoAssistencia: ISolicitaoAssistencia) => void;
+  updateValidacoes: (validacoes: IValidacoes) => void;
+  updateObservacoes: (observacoes: string) => void;
 }
 
-/**
+/** 
  * useInvoice hook.
  *
  */
@@ -31,22 +42,22 @@ export const useInvoice = (): UseInvoiceHookReturn => {
    * Handle change invoice item.
    *
    * @param {number} index
-   * @param {keyof IInvoiceLineItem2 | string} property
-   * @param {string} value
+   * @param {keyof ITempo | string} tempo
+   * @param {Date} value
    */
-  const handleChangeLineItem = (index: number, property: keyof IInvoiceLineItem2, value: string): void => {
-    const { items } = invoice;
+  const handleChangeTempo = (index: number, tempo: keyof ITempo, value: Date|string): void => {
+    const { temposServico } = invoice;
 
-    const selectedItem = {
-      ...items[index],
-      [property]: value,
+    const selectedTempo = {
+      ...temposServico[index],
+      [tempo]: value,
     };
 
     const updateInvoiceItems = (
-      items: Array<IInvoiceLineItem2>,
+      items: Array<ITempo>,
       index: number,
-      updatedItem: IInvoiceLineItem2,
-    ): Array<IInvoiceLineItem2> => {
+      updatedItem: ITempo,
+    ): Array<ITempo> => {
       return [
         ...items.slice(0, index), // everything before current items
         {
@@ -57,20 +68,20 @@ export const useInvoice = (): UseInvoiceHookReturn => {
       ];
     };
 
-    setInvoice({ ...invoice, items: updateInvoiceItems(invoice.items, index, selectedItem) });
+    setInvoice({ ...invoice, temposServico: updateInvoiceItems(invoice.temposServico, index, selectedTempo) });
   };
 
   /**
    * Append new invoice line item
    *
-   * @param {IInvoiceLineItem2} newLineItem
+   * @param {ITempo} newLineItem
    * @return { void }
    */
-  const append = (newLineItem: IInvoiceLineItem2): void => {
-    const lineItems = invoice.items.concat(newLineItem);
+  const append = (newLineItem: ITempo): void => {
+    const lineItems = invoice.temposServico.concat(newLineItem);
     setInvoice({
       ...invoice,
-      items: lineItems,
+      temposServico: lineItems,
     });
   };
 
@@ -81,60 +92,61 @@ export const useInvoice = (): UseInvoiceHookReturn => {
    * @return { void }
    */
   const remove = (index: number): void => {
-    const filteredItems = invoice.items.filter((item, itemIndex) => itemIndex !== index);
+    const filteredItems = invoice.temposServico.filter((item, itemIndex) => itemIndex !== index);
     setInvoice({
       ...invoice,
-      items: filteredItems,
+      temposServico: filteredItems,
     });
   };
 
   /**
    * Update invoice recipient.
    *
-   * @param {IInvoiceRecipient} recipient
+   * @param {ICliente} cliente
    */
-  const updateRecipient = (recipient: IInvoiceRecipient): void => {
-    setInvoice({ ...invoice, recipient });
+  const updateCliente = (cliente: ICliente): void => {
+    setInvoice({ ...invoice, cliente });
   };
 
-  /**
-   * Update invoice sender.
-   *
-   * @param {IInvoiceSender} sender
-   */
-  const updateSender = (sender: IInvoiceSender): void => {
-    setInvoice({ ...invoice, sender });
+  const updateEquipamento = (equipamento: IEquipamento): void => {
+    setInvoice({ ...invoice, equipamento });
   };
 
-  /**
-   * Update tax rate.
-   *
-   * @param {number} taxRate
-   */
-  const updateTaxRate = (taxRate: number): void => {
-    setInvoice({ ...invoice, taxRate });
+  const updateMateriais = (materiais: IMateriais): void => {
+    setInvoice({ ...invoice, materiais });
   };
 
-  /**
-   * Update invoice logo.
-   *
-   * @param {string} logo
-   */
-  const updateLogo = (logo?: string): void => {
-    setInvoice({ ...invoice, logo });
+  const updateServicosEfetuados = (servicosEfetuados: IServicosEfetuados): void => {
+    setInvoice({ ...invoice, servicosEfetuados });
   };
+
+  const updateSolicitacaoAssistencia = (solicitacaoAssistencia: ISolicitaoAssistencia): void => {
+    setInvoice({ ...invoice, solicitacaoAssistencia });
+  };
+
+  const updateValidacoes = (validacoes: IValidacoes): void => {
+    setInvoice({ ...invoice, validacoes });
+  };
+
+  const updateObservacoes = (observacoes: string): void => {
+    setInvoice({ ...invoice, observacoes });
+  };
+
+
 
   return {
     invoice,
     setInvoice,
     reset,
-    handleChangeLineItem,
+    handleChangeTempo,
     append,
     remove,
-    updateRecipient,
-    updateTaxRate,
-    updateSender,
-
-    updateLogo,
+    updateCliente,
+    updateEquipamento,
+    updateMateriais,
+    updateServicosEfetuados,
+    updateSolicitacaoAssistencia,
+    updateValidacoes,
+    updateObservacoes
   };
 };

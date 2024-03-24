@@ -24,7 +24,7 @@ const Page: FC<Props> = ({ children }) => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: 'Be Vietnam Pro',
+        // fontFamily: 'Be Vietnam Pro',
       }}
     >
       {children}
