@@ -19,7 +19,7 @@ const InvoiceItemHeader: FC = () => {
   const { editable } = useGenerator();
 
   const renderDivider: ReactElement = (
-    <Box style={{ width: '1px', height: 12, backgroundColor: '#dfe5ec', position: 'absolute', left: 0 }} />
+    <Box style={{ width: '3px', height: 18, backgroundColor: '#dfe5ec', position: 'absolute', left: 0 }} />
   );
 
   return (
@@ -38,22 +38,34 @@ const InvoiceItemHeader: FC = () => {
       }}
     >
       <>
-        <Box style={{ width: '40%', ...colStyles }}>
+        {/* <Box style={{ width: '30%', ...colStyles }}>
           <Typography
             style={{
               fontWeight: 600,
             }}
           >
-            {'Apontamentos do Serviço'}
+            {'Apontamentos'}
           </Typography>
+        </Box> */}
+        <Box style={{ width: '19%', ...colStyles }}>
+          {renderDivider}
+          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Data'}</Typography>
         </Box>
-        <Box style={{ width: '30%', ...colStyles }}>
+        <Box style={{ width: '21%', ...colStyles }}>
           {renderDivider}
           <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Início'}</Typography>
         </Box>
-        <Box style={{ width: '30%', ...colStyles }}>
+        <Box style={{ width: '21%', ...colStyles }}>
           {renderDivider}
           <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Fim'}</Typography>
+        </Box>
+        <Box style={{ width: '20%', ...colStyles }}>
+          {renderDivider}
+          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Km Ida'}</Typography>
+        </Box>
+        <Box style={{ width: '21%', ...colStyles }}>
+          {renderDivider}
+          <Typography style={{ fontWeight: 600, marginLeft: '12px' }}>{'Km Volta'}</Typography>
         </Box>
       </>
     </Box>

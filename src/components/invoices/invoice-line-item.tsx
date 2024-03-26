@@ -26,7 +26,7 @@ import { ITempo } from '@/interfaces/tempo';
 import EditableDatePicker from '../base/editable-date-picker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { TextField } from '@mui/material';
-import { DesktopDateTimePicker } from '@mui/x-date-pickers';
+import { DateField, DesktopDateTimePicker, TimeField } from '@mui/x-date-pickers';
 
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
@@ -56,7 +56,7 @@ interface Props {
   item: ITempo;
   index: number;
   lastItem: boolean;
-  onChange?: (index: number, property: keyof ITempo, value: Date|string) => void;
+  onChange?: (index: number, property: keyof ITempo, value: Date|string|number) => void;
   dispatchAlert?: (item: ITempo) => void;
 }
 
@@ -65,17 +65,22 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
   const { remove } = useInvoice();
 
   const handleChange1 = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    if(onChange != undefined) onChange(index, e.target.name as keyof ITempo, e.target.value);
+    if(onChange != undefined) onChange(index, e.target.name as keyof ITempo, parseInt(e.target.value));
   };
   
-  const handleChangeInicio = (d: string | null): void => {
+  const handleChangeData = (d: string | null): void => {
     console.log(d)
-    if(d != undefined && onChange != undefined)   onChange(index, "inicio" as keyof ITempo, new Date(d));
+    if(d != undefined && onChange != undefined)   onChange(index, "data" as keyof ITempo, new Date(d));
+  };
+
+  const handleChangeInicio = (d: string | null): void => {
+    if(d != null && onChange != undefined)   onChange(index, "inicio" as keyof ITempo, d);
+    // if(d != null && onChange != undefined)   onChange(index, "fim" as keyof ITempo, d);
   };
 
   const handleChangeFim = (d: string | null): void => {
-    console.log(d)
-    if(d != undefined && onChange != undefined)   onChange(index, "fim" as keyof ITempo, new Date(d));
+    console.log(item)
+    if(d != null && onChange != undefined)   onChange(index, "fim" as keyof ITempo, d);
   };
      
 
@@ -89,7 +94,7 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
 
   return (
     
-    <Box
+    <Box 
       style={{
         width: '100%',
         display: 'flex',
@@ -111,7 +116,7 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
       
       
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
-      <Box style={{ width: '40%', ...colStyles }}>
+      {/* <Box style={{ width: '30%', ...colStyles }}>
         <EditableText
           name="nota"
           multiline
@@ -120,20 +125,53 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
           value={item.nota}
           onChange={handleChange1}
         />
+      </Box> */}
+      <Box style={{ width: '19%', textAlign: 'center', ...colStyles }}>
+        <DateField
+          value={item.data}         
+          // ampm={false}
+          onChange={(newValue) => handleChangeData(newValue)}
+          slotProps={{ textField: { size: 'small' } }}
+          format="DD/MM"
+        /> 
       </Box>
-      <Box style={{ width: '30%', ...colStyles }}>
-        <DesktopDateTimePicker
+      <Box style={{ width: '21%', ...colStyles }}>
+      <TimeField 
           value={item.inicio}         
-          ampm={false}
+          format="HH:mm"
+          // ampm={false}
           onChange={(newValue) => handleChangeInicio(newValue)}
+          slotProps={{ textField: { size: 'small' } }}
         /> 
       </Box>
-      <Box style={{ width: '30%', ...colStyles }}>
-      <DesktopDateTimePicker
+      <Box style={{ width: '21%', ...colStyles }}>
+      <TimeField 
           value={item.fim}         
-          ampm={false}
+          format="HH:mm"
+          // ampm={false}
           onChange={(newValue) => handleChangeFim(newValue)}
+          slotProps={{ textField: { size: 'small' } }}
         /> 
+      </Box>
+      <Box style={{ width: '20%', ...colStyles }}>
+        <EditableText
+          name="kmIda"
+          multiline
+          minRows={1}
+          maxRows={1}
+          value={item.kmIda}
+          onChange={handleChange1}
+        />
+      </Box>
+      <Box style={{ width: '21%', ...colStyles }}>
+        <EditableText
+          name="kmVolta"
+          multiline
+          minRows={1}
+          maxRows={1}
+          value={item.kmVolta}
+          onChange={handleChange1}
+        />
       </Box>
 
       {editable && (

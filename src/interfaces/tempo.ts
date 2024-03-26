@@ -1,5 +1,7 @@
 export interface ITempo {
-  nota: string;
+  data: string;
   inicio: string;
   fim: string;
+  kmIda: number;
+  kmVolta: number;
 }

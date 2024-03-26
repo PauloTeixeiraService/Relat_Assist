@@ -24,9 +24,11 @@ const AddInvoiceItem: FC = () => {
 
   const handleAddNewLine = (): void => {
     append({
-      nota: '',
+      data: '',
       inicio: '',
-      fim: ''
+      fim: '',
+      kmIda: 0,
+      kmVolta: 0
     });
   };
 

@@ -12,7 +12,7 @@ import { IValidacoes } from '@/interfaces/validacoes';
 
 interface UseInvoiceHookReturn extends IInvoiceContext {
   reset: () => void;
-  handleChangeTempo: (index: number, property: keyof ITempo, value: Date|string ) => void;
+  handleChangeTempo: (index: number, property: keyof ITempo, value: Date|string|number ) => void;
   append: (newTempo: ITempo) => void;
   remove: (index: number) => void;
   updateCliente: (recipient: ICliente) => void;
@@ -45,7 +45,7 @@ export const useInvoice = (): UseInvoiceHookReturn => {
    * @param {keyof ITempo | string} tempo
    * @param {Date} value
    */
-  const handleChangeTempo = (index: number, tempo: keyof ITempo, value: Date|string): void => {
+  const handleChangeTempo = (index: number, tempo: keyof ITempo, value: Date|string|number): void => {
     const { temposServico } = invoice;
 
     const selectedTempo = {

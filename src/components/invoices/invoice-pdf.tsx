@@ -37,6 +37,7 @@ import { TextField, Typography } from '@mui/material';
 import PDFData from '../base/pdf-data';
 import PDFDataBold from '../base/pdf-data-bold';
 import InvoiceLineItemDisplay from './invoice-line-item-display';
+import InvoiceItemHeaderDisplay from './invoice-line-item-header-display';
 
 interface Props {
   invoice: IInvoice;
@@ -186,7 +187,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
             <br></br>
             <SectionTitle>Horas de Serviço a Registar:</SectionTitle>
             <br></br>
-            <InvoiceItemHeader />
+            <InvoiceItemHeaderDisplay />
             {Array.isArray(invoice.temposServico) &&
               invoice.temposServico.length > 0 &&
               // Render invoice items
