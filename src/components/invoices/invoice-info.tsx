@@ -21,11 +21,10 @@ const lineStyle = { display: 'flex', flexDirection: 'row', alignItems: 'center' 
 const textStyle = { fontWeight: 600 };
 
 interface Props {
-  invoiceNumber: string;
-  date: string;
+  invoiceNumber: string | null;
 }
 
-const InvoiceInfo: FC<Props> = ({ invoiceNumber, date }) => {
+const InvoiceInfo: FC<Props> = ({ invoiceNumber }) => {
   const { editable } = useGenerator();
 
   const { invoice, setInvoice } = useInvoice();
@@ -34,37 +33,15 @@ const InvoiceInfo: FC<Props> = ({ invoiceNumber, date }) => {
     setInvoice({ ...invoice, [e.target.name]: e.target.value });
   };
 
-  // const onChangeDate = (e: ChangeEvent<HTMLInputElement>): void => {
-  //   setInvoice({ ...invoice, ['date']: new Date(e.target.value).toString() });
-  // };
-
-  const onChangeDate = (d: string | null): void => {
-    if(d!=null) setInvoice({ ...invoice, ['date']: d });
-  };
-
-  // const onChangeDate = (property: 'date' | 'due', value: string): void => {
-  //   setInvoice({ ...invoice, [property]: value });
-  // };
-
   return (
     <Box style={{ backgroundColor: '#F7FBFF', borderRadius: 3, padding: editable ? '16px 20px' : '12px 16px' }}>
       
-      {/* <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
-        <Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}>Invoice Date :</Typography>
-        {editable ? (
-          
-          // <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
-          <DesktopDatePicker
-            value={new Date(date)}   
-            format='dd/MM/yyyy'      
-            slotProps={{ textField: { variant: 'standard', InputProps: { disableUnderline: true },} }}
-            onChange={(newValue) => onChangeDate(newValue!=null ? newValue.toString(): '')}
-          /> 
-          // </LocalizationProvider>
-        ):(
-          <a></a>
+      <Box style={{ height: editable ? 26 : 20, ...lineStyle }}>
+        {invoiceNumber!='' ? (<Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}>Nº de identificação do comprovativo: {invoiceNumber}</Typography> 
+        ): (
+        <Typography style={{ minWidth: editable ? '110px' : '80px', ...textStyle }}></Typography>
         )}
-      </Box> */}
+      </Box>
     </Box>
   );
 };

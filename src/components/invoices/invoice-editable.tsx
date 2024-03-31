@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo, useState } from 'react';
+import { ChangeEvent, FC, useMemo, useRef, useState } from 'react';
 
 // Mui components.
 import { Box, SectionTitle } from '../../components/base';
@@ -42,10 +42,11 @@ import InvoiceServicosEfetuados from './invoice-servicosEfetuados';
 import InvoiceMateriais from './invoice-materiais';
 import InvoiceValidacoes from './invoice-validacoes';
 import DialogValidacoes from './dialog-validacoes';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { IInvoice } from '@/interfaces/invoice';
 
 const InvoiceEditable: FC = () => {
+
   const dispatch = useDispatch();
   const { editable } = useGenerator();
   //updateLogo removed
@@ -128,8 +129,7 @@ const InvoiceEditable: FC = () => {
         <DialogValidacoes />
         <Container>
           <InvoiceTitle title="COMPROVATIVO" />
-          
-          <InvoiceInfo invoiceNumber='' date={invoice.date} />
+          <InvoiceInfo invoiceNumber='' />
           <br></br>
           <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '20px' }}>
             {/* <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginRight: '20px' }}>

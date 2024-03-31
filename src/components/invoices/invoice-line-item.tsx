@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, useState } from 'react';
 
 // Mui components.
 import Tooltip from '@mui/material/Tooltip';
@@ -64,8 +64,16 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
   const { editable } = useGenerator();
   const { remove } = useInvoice();
 
+  const [inicioComparison, setInicioComparison] = useState(new Date(0,0,0,0,0,0,0).toString());
+
   const handleChange1 = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     if(onChange != undefined) onChange(index, e.target.name as keyof ITempo, parseInt(e.target.value));
+  };
+  
+  const handleChange2 = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+    if(onChange != undefined) {
+        onChange(index, e.target.name as keyof ITempo, Number(e.target.value));
+    }
   };
   
   const handleChangeData = (d: string | null): void => {
@@ -74,13 +82,28 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
   };
 
   const handleChangeInicio = (d: string | null): void => {
-    if(d != null && onChange != undefined)   onChange(index, "inicio" as keyof ITempo, d);
-    // if(d != null && onChange != undefined)   onChange(index, "fim" as keyof ITempo, d);
+    if(d != null && onChange != undefined){   
+      onChange(index, "inicio" as keyof ITempo, d); 
+      setInicioComparison(d);
+    }
   };
 
-  const handleChangeFim = (d: string | null): void => {
-    console.log(item)
-    if(d != null && onChange != undefined)   onChange(index, "fim" as keyof ITempo, d);
+  const handleChangeFim = (d: string) => {
+    if(d != null && onChange != undefined){
+      let hour = Number(d.split(':')[0]);
+      let min = Number(d.split(':')[1]);
+      let dateFim = new Date();
+      dateFim.setHours(hour, min, 0, 0)
+      let dateInicio = new Date(inicioComparison);
+
+      if(dateFim>dateInicio){
+        onChange(index, "fim" as keyof ITempo, dateFim.toString());
+      }else{        
+        alert("Por favor, coloque um tempo final posterior ao inicial!");
+        onChange(index, "fim" as keyof ITempo, inicioComparison);
+              
+      }
+    }
   };
      
 
@@ -149,7 +172,7 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
           value={item.fim}         
           format="HH:mm"
           // ampm={false}
-          onChange={(newValue) => handleChangeFim(newValue)}
+          onBlur={(e) => handleChangeFim(e.target.value)}
           slotProps={{ textField: { size: 'small' } }}
         /> 
       </Box>
@@ -159,8 +182,8 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
           multiline
           minRows={1}
           maxRows={1}
-          value={item.kmIda}
-          onChange={handleChange1}
+          value={item.kmIda.toString()}
+          onChange={handleChange2}
         />
       </Box>
       <Box style={{ width: '21%', ...colStyles }}>
@@ -169,8 +192,8 @@ const IInvoiceLineItem: FC<Props> = ({ item, index, lastItem, onChange, dispatch
           multiline
           minRows={1}
           maxRows={1}
-          value={item.kmVolta}
-          onChange={handleChange1}
+          value={item.kmVolta.toString()}
+          onChange={handleChange2}
         />
       </Box>
 

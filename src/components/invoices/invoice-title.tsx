@@ -7,7 +7,7 @@ import { Typography, Box } from '../../components/base';
 import { useGenerator } from '../../hooks/useGenerator';
 
 interface Props {
-  title: string;
+  title: string | null;
 }
 
 const InvoiceTitle: FC<Props> = ({ title }) => {

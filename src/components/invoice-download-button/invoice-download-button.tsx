@@ -110,6 +110,14 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
 
   const handleDownloadPdf = (): void => {    
 
+    const initialValue = localStorage.getItem("count");
+    if (initialValue){
+      let newValue = Number(initialValue) +1;
+      localStorage.setItem("count", newValue.toString());
+    }else{
+      localStorage.setItem("count", "1");
+    }
+
     setInvoice(invoice);
 
     wait(5000);
@@ -149,6 +157,15 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
 
   
   const handleSendPdf = (): void => {    
+
+    
+    const initialValue = localStorage.getItem("count");
+    if (initialValue){
+      let newValue = Number(initialValue) +1;
+      localStorage.setItem("count", newValue.toString());
+    }else{
+      localStorage.setItem("count", "1");
+    }
 
     setInvoice(invoice);
 

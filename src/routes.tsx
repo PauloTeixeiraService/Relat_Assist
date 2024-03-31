@@ -8,7 +8,7 @@ import type { RouteObject } from 'react-router-dom';
 const routes = (): Array<RouteObject> => [
   {
     path: '/',
-    element: <HomeScreen />,
+    element: <InvoiceGeneratorScreen />,
   },
   {
     path: '/generator',
