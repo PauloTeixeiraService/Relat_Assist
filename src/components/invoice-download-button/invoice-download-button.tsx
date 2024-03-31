@@ -181,7 +181,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
           },
         };
 
-        axios.post("http://localhost:1234/sendPdf", formData)
+        axios.post("https://mailsender-tau.vercel.app/sendPdf", formData)
           .then(response=>{
             console.log(response);
             alert(response.data)
