@@ -52,6 +52,7 @@ const InvoiceCliente: FC<Props> = ({ cliente, handleOpenDialog }) => {
             {cliente.nome && (<Typography>{cliente.nome || null}</Typography>)}
             {cliente.morada && (<Typography>{cliente.morada || null}</Typography>)}
             {cliente.NIF && (<Typography>{cliente.NIF || null}</Typography>)}
+            {cliente.email && (<Typography>{cliente.email || null}</Typography>)}
           </>
         ) : editable ? (
           <InvoiceEditableContentNoData

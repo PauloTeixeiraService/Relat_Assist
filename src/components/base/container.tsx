@@ -28,7 +28,7 @@ const Container: FC<Props> = ({ children }) => {
   return editable ? (
     <MuiBox sx={containerStyles}>{children}</MuiBox>
   ) : (
-    <PDFView debug={false} style={{ padding: '22px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+    <PDFView wrap debug={false} style={{ padding: '22px 28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
       {children}
     </PDFView>
   );

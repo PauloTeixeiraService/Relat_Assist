@@ -5,6 +5,7 @@
   "homepage": "https://PauloTeixeiraService.github.io/Relat_Assist",
   "dependencies": {
     "@date-io/date-fns": "^2.14.0",
+    "@emailjs/browser": "^4.3.3",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@faker-js/faker": "^7.1.0",

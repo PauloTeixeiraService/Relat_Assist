@@ -30,8 +30,11 @@ import { ISetInvoice } from '../../store/invoice/invoice-actions';
 import { useInvoice } from '../../hooks';
 import { ArrowDownward } from '@mui/icons-material';
 import { wait } from '@testing-library/user-event/dist/utils';
-import axios from 'axios';
 import SaveIcon from '@mui/icons-material/Save';
+
+// import emailjs from '@emailjs/browser';
+
+import axios from 'axios'
 
 // const nodemailer = require("nodemailer");
 
@@ -141,6 +144,63 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
 
         // Clean up and remove it from dom
         link.parentNode?.removeChild(link);
+      });
+  };
+
+  
+  const handleSendPdf = (): void => {    
+
+    setInvoice(invoice);
+
+    wait(5000);
+
+    updatePdfInstance(<PdfDocument invoice={invoice} />);
+
+    wait(5000);
+    
+    const invoiceFileName = persistedInvoice.fileName
+    ? `${persistedInvoice.fileName}_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')} + .pdf`
+    : `invoice_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')}.pdf`;
+
+    fetch(String(pdfInstance.url), {
+      method: 'GET',
+      headers: { 'Content-Type': pdfInstance.blob?.type || 'application/pdf' },
+    })
+      .then((response) => response.blob())
+      .then((blob) => {
+        // Create blob link to download
+        var file = new File([blob], invoiceFileName);
+        console.log(invoiceFileName);
+        
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('email', "miguelbrunopaiva.silva@gmail.com");
+        const config = {
+          headers: {
+            'content-type': 'multipart/form-data',
+          },
+        };
+
+        axios.post("http://localhost:1234/sendPdf", formData)
+          .then(response=>{
+            console.log(response);
+            alert(response.data)
+          })
+        // const url = window.URL.createObjectURL(new Blob([blob]));
+        // const link = document.createElement('a');
+        // link.href = url;
+
+        // // Set attribute link download
+        // link.setAttribute('download', invoiceFileName);
+
+        // // Append link to the element;
+        // document.body.appendChild(link);
+
+        // // Finally download file.
+        // link.click();
+
+        // // Clean up and remove it from dom
+        // link.parentNode?.removeChild(link);
       });
   };
   /** Set persisted invoice */
@@ -259,7 +319,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                   },
                 },
               }}
-              onClick={handleDownloadPdf}
+              onClick={handleSendPdf}
             >
               <SendIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
               <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Enviar Registo</Typography>

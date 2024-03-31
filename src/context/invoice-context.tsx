@@ -17,12 +17,14 @@ export const initialInvoiceData: IInvoice = {
   prestador: {
     nome: 'Paulo Teixeira',
     morada:  ' -a preencher- ',
-    NIF: ' -a preencher- '
+    NIF: ' -a preencher- ',
+    email: ''
   },
   cliente: {
     nome: '',
     morada:  '',
-    NIF: ''
+    NIF: '',
+    email: ''
   },  
   equipamento: {    
     tipologia: '',

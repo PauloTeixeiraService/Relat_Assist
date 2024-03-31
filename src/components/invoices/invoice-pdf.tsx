@@ -135,6 +135,8 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
               <PDFDataBold>Morada: {invoice.cliente.morada}</PDFDataBold>
               <br></br>
+              <PDFDataBold>E-Mail: {invoice.cliente.email}</PDFDataBold>
+              <br></br>
 
               
               <SectionTitle> </SectionTitle>
@@ -190,7 +192,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
             <InvoiceItemHeaderDisplay />
             {Array.isArray(invoice.temposServico) &&
               invoice.temposServico.length > 0 &&
-              // Render invoice items
+              // Render invoice items 
               invoice.temposServico.map((tempo, index) => (
 
                 <InvoiceLineItemDisplay 

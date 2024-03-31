@@ -93,6 +93,17 @@ const DialogCliente: FC = () => {
             label="NIF"
           />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            value={cliente.email}
+            onChange={handleChange}
+            size="small"
+            margin="none"
+            name="email"
+            label="E-Mail"
+          />
+        </Grid>
       </Grid>
     </BaseDialog>
   );
