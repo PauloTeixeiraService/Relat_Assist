@@ -191,7 +191,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
         
         const formData = new FormData();
         formData.append('file', file);
-        formData.append('email', "miguelbrunopaiva.silva@gmail.com");
+        formData.append('email', invoice.cliente.email);
         const config = {
           headers: {
             'content-type': 'multipart/form-data',
