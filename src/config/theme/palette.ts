@@ -11,9 +11,9 @@ export const palette: Partial<Palette> = {
     paper: common.white,
   },
   primary: {
-    main: '091E53',
+    // main: '091E53',
     light: '#dbeeff',
-    // main: '#4790FF',
+    main: '#4790FF',
     dark: '#2352B7',
     contrastText: '#fbfbfb',
   },
