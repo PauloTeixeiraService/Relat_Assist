@@ -128,7 +128,7 @@ const InvoiceEditable: FC = () => {
         <DialogMateriais />
         <DialogValidacoes />
         <Container>
-          <InvoiceTitle title="COMPROVATIVO" />
+          <InvoiceTitle title="RELATÓRIO" />
           <InvoiceInfo invoiceNumber='' />
           <br></br>
           <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '20px' }}>

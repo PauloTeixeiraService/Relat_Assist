@@ -22,6 +22,7 @@ import InvoiceCompanyLogo from '../invoices/invoice-company-logo';
 // import InvoiceTermAndConditions from './invoice-term-and-condition';
 import InvoiceRecipient from './invoice-cliente';
 
+import MuiBox from '@mui/material/Box';
 // Hooks.
 // import { useGenerator } from '../../hooks/useGenerator';
 
@@ -38,6 +39,9 @@ import PDFData from '../base/pdf-data';
 import PDFDataBold from '../base/pdf-data-bold';
 import InvoiceLineItemDisplay from './invoice-line-item-display';
 import InvoiceItemHeaderDisplay from './invoice-line-item-header-display';
+
+
+import PATEKNIKA_logo_fundo_branco from '../../assets/images/PATEKNIKA_logo_fundo_branco.png';
 
 interface Props {
   invoice: IInvoice;
@@ -115,19 +119,28 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
     <Document>
       <Page>
         <Container>
-          <InvoiceTitle title="COMPROVATIVO" />
+        <SectionTitle> </SectionTitle>
+
+          {/* <Box style={{ display: 'flex', flex: 0.6, flexDirection: 'column', marginRight: '55px' }}> */}
+              <InvoiceCompanyLogo logo={PATEKNIKA_logo_fundo_branco} onUploadImage={() => null} />
+            {/* </Box> */}
+            {/* <SectionTitle> </SectionTitle> */}
+             
+          <InvoiceTitle title="RELATÓRIO" />
+          <SectionTitle> </SectionTitle>
           
           <InvoiceInfo invoiceNumber={localStorage.getItem("count")} />
+              <SectionTitle> </SectionTitle>
               <SectionTitle> </SectionTitle>
           
           {/* <InvoiceInfo invoiceNumber='' date={invoice.date} /> */}
           <br></br>
-          <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '20px' }}>
+          <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '22px' }}>
             {/* <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginRight: '20px' }}>
               <InvoiceCompanyLogo logo={invoice.logo} onUploadImage={updateLogo} />
               <InvoiceSender from={invoice.sender} handleOpenDialog={onOpenDialogEditSender} />
             </Box> */}
-            <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '20px' }}>
+            <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '22px' }}>
               <br></br>
               <SectionTitle>Cliente</SectionTitle>
               <PDFDataBold>Nome: {invoice.cliente.nome}</PDFDataBold>
@@ -182,11 +195,19 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
             
             </Box>
             
+              <SectionTitle> </SectionTitle>
+              <SectionTitle> </SectionTitle>
             <br></br>
 
-          </Box>
+            </Box>
+            </Container> 
+            </Page>
+        <Page>
+        <Container>
           <Box style={{ marginBottom: '16px' }}>
             <hr></hr>
+              <SectionTitle> </SectionTitle>
+              <SectionTitle> </SectionTitle>
             <br></br>
             <SectionTitle>Horas de Serviço a Registar:</SectionTitle>
             <br></br>

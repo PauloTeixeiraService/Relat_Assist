@@ -7,12 +7,13 @@ import { Palette } from '@mui/material/styles';
 // Custom theme palette.
 export const palette: Partial<Palette> = {
   background: {
-    default: '#dbfaff',
+    default: '#7683A3',
     paper: common.white,
   },
   primary: {
+    main: '091E53',
     light: '#dbeeff',
-    main: '#4790FF',
+    // main: '#4790FF',
     dark: '#2352B7',
     contrastText: '#fbfbfb',
   },

@@ -31,7 +31,7 @@ const Placeholder: FC<PlaceholderProps> = ({ hasLogo, children }) => {
   return (
     <MuiBox
       sx={{
-        minHeight: 110,
+        minHeight: 310,
         opacity: hasLogo ? 1 : 0.5,
         color: 'primary.main',
         backgroundColor: hasLogo ? 'transparent' : 'primary.light',
@@ -96,10 +96,10 @@ const InvoiceCompanyLogo: FC<Props> = ({ logo, onUploadImage }) => {
     onUploadImage('');
   };
 
-  return editable ? (
+  return false ? (
     <Box>
       <MuiBox
-        sx={{ maxWidth: 160, height: 'auto', mb: 2, cursor: 'pointer', position: 'relative', zIndex: 1 }}
+        sx={{ maxWidth: 360, height: 360, mb: 2, cursor: 'pointer', position: 'relative', zIndex: 1 }}
         onClick={handleUpload}
       >
         {logo ? (
@@ -112,7 +112,7 @@ const InvoiceCompanyLogo: FC<Props> = ({ logo, onUploadImage }) => {
                 {/* <UploadFileIcon sx={{ fontSize: 32, mb: 1.5 }} /> */}
                 <Typography>Upload Image</Typography>
               </MuiBox>
-              <MuiBox component="img" src={logo} sx={{ width: '100%' }} alt="Invoice logo" />
+              <MuiBox component="img" src={logo} sx={{ height: 500, width: 1000 }} alt="Invoice logo" />
             </>
           </Placeholder>
         ) : (
@@ -142,8 +142,8 @@ const InvoiceCompanyLogo: FC<Props> = ({ logo, onUploadImage }) => {
       )}
     </Box>
   ) : (
-    <Box style={{ maxWidth: 110, height: 'auto', marginBottom: '12px' }}>
-      {logo ? <Image source={String(logo)} /> : <Box style={{ height: '10px' }} />}
+    <Box style={{ maxWidth: 280, height: '10%', marginBottom: '12px' }}>
+      {logo ? <Image source={String(logo)} /> : <Box style={{ height: '15px' }} />}
     </Box>
   );
 };

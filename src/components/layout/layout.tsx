@@ -32,7 +32,7 @@ const Layout: FC<Props> = ({ children }) => {
           position: 'fixed',
           backgroundColor: 'primary.main',
           height: isMatchMobileView ? 300 : 400,
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${backgroundImage})`, 
           backgroundSize: 'cover',
           backgroundPosition: 'center bottom',
           backgroundRepeat: 'no-repeat',
@@ -48,3 +48,4 @@ const Layout: FC<Props> = ({ children }) => {
 };
 
 export default Layout;
+ 
