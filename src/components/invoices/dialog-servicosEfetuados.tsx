@@ -77,6 +77,7 @@ const DialogServicosEfetuados: FC = () => {
         <Grid item xs={24} sm={12}>
           <TextField
             fullWidth
+            multiline            
             value={servicosefetuados.descricaoServico}
             onChange={handleChange}
             size="small"
