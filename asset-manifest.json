@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/Relat_Assist/static/css/main.a2621d78.css",
-    "main.js": "/Relat_Assist/static/js/main.9f77482d.js",
+    "main.js": "/Relat_Assist/static/js/main.99b5fb47.js",
     "static/js/821.c7bd50bc.chunk.js": "/Relat_Assist/static/js/821.c7bd50bc.chunk.js",
-    "static/js/758.d8010bc1.chunk.js": "/Relat_Assist/static/js/758.d8010bc1.chunk.js",
+    "static/js/922.9586471d.chunk.js": "/Relat_Assist/static/js/922.9586471d.chunk.js",
     "static/js/239.4bbc972b.chunk.js": "/Relat_Assist/static/js/239.4bbc972b.chunk.js",
-    "static/js/678.5529b780.chunk.js": "/Relat_Assist/static/js/678.5529b780.chunk.js",
+    "static/js/451.fc0dbae5.chunk.js": "/Relat_Assist/static/js/451.fc0dbae5.chunk.js",
     "static/media/PATEKNIKA_logo_vertical_fundo_branco.png": "/Relat_Assist/static/media/PATEKNIKA_logo_vertical_fundo_branco.32b74549d47b19503982.png",
     "static/media/PATEKNIKA_logo_fundo_branco.png": "/Relat_Assist/static/media/PATEKNIKA_logo_fundo_branco.45464eff167731a824ca.png",
     "static/media/background_header.jpg": "/Relat_Assist/static/media/background_header.91aece3cf188811f2e12.jpg",
     "index.html": "/Relat_Assist/index.html",
     "main.a2621d78.css.map": "/Relat_Assist/static/css/main.a2621d78.css.map",
-    "main.9f77482d.js.map": "/Relat_Assist/static/js/main.9f77482d.js.map",
+    "main.99b5fb47.js.map": "/Relat_Assist/static/js/main.99b5fb47.js.map",
     "821.c7bd50bc.chunk.js.map": "/Relat_Assist/static/js/821.c7bd50bc.chunk.js.map",
-    "758.d8010bc1.chunk.js.map": "/Relat_Assist/static/js/758.d8010bc1.chunk.js.map",
+    "922.9586471d.chunk.js.map": "/Relat_Assist/static/js/922.9586471d.chunk.js.map",
     "239.4bbc972b.chunk.js.map": "/Relat_Assist/static/js/239.4bbc972b.chunk.js.map",
-    "678.5529b780.chunk.js.map": "/Relat_Assist/static/js/678.5529b780.chunk.js.map"
+    "451.fc0dbae5.chunk.js.map": "/Relat_Assist/static/js/451.fc0dbae5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2621d78.css",
-    "static/js/main.9f77482d.js"
+    "static/js/main.99b5fb47.js"
   ]
 }
