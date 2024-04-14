@@ -31,6 +31,8 @@ import { useInvoice } from '../../hooks';
 import { ArrowDownward } from '@mui/icons-material';
 import { wait } from '@testing-library/user-event/dist/utils';
 import SaveIcon from '@mui/icons-material/Save';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // import emailjs from '@emailjs/browser';
 
@@ -52,7 +54,7 @@ interface Props {
 }
 const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
   const { invoice_data: persistedInvoice } = useAppSelector((state) => state.invoice);
-  const { invoice } = useInvoice();
+  const { invoice, replace, reset } = useInvoice();
 
   const [pdfInstance, updatePdfInstance] = usePDF({
     document: persistedInvoice ? (
@@ -102,10 +104,32 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
   }, [invoice]);
 
   const guardar = (): void => {    
+    wait(5000);
+
+    localStorage.setItem("rascunho", JSON.stringify(invoice));
 
     setInvoice(invoice);
 
     updatePdfInstance(<PdfDocument invoice={invoice} />);
+  }
+
+  const carregar = (): void => {    
+
+    wait(5000);
+    var ri = localStorage.getItem("rascunho");
+
+    console.log(ri);
+
+    wait(5000);
+    if(ri != null){
+      var rascunhoInvoice = JSON.parse(ri);
+
+      replace(rascunhoInvoice);
+
+      setInvoice(rascunhoInvoice);
+
+      updatePdfInstance(<PdfDocument invoice={rascunhoInvoice} />);
+    }
   }
 
   const handleDownloadPdf = (): void => {    
@@ -137,9 +161,8 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
         const link = document.createElement('a');
         link.href = url;
 
-        const invoiceFileName = persistedInvoice.fileName
-          ? `${persistedInvoice.fileName}_${format(new Date(persistedInvoice.date), 'dd/MM/yyyy')} + .pdf`
-          : `invoice_${format(new Date(persistedInvoice.date), 'dd/MM/yyyy')}.pdf`;
+        const invoiceFileName = `relatorio_Nr_${initialValue}_data_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')}.pdf`;
+
 
         // Set attribute link download
         link.setAttribute('download', invoiceFileName);
@@ -175,9 +198,7 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
 
     wait(5000);
     
-    const invoiceFileName = persistedInvoice.fileName
-    ? `${persistedInvoice.fileName}_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')} + .pdf`
-    : `invoice_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')}.pdf`;
+    const invoiceFileName = `relatorio_Nr_${initialValue}_data_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')}.pdf`;
 
     fetch(String(pdfInstance.url), {
       method: 'GET',
@@ -235,12 +256,46 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
         justifyContent: 'start',
         flexDirection: 'column',        
         // zIndex: 2,
-        top: -BUTTON_SIZE-170,
+        top: -BUTTON_SIZE-310,
         }}
       >
         {!pdfInstance.error ? (
           !pdfInstance.loading && (
             <div>
+            <IconButton
+              sx={{
+                backgroundColor: '#778899',
+                border: '3px solid #fff',
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: `${BUTTON_SIZE}px`,
+                transition: (theme) => theme.transitions.create(['width']),
+                textAlign: 'center',
+                overflow: 'hidden',
+                '& .MuiTypography-root': {
+                  transform: 'translateX(150px)',
+                  transition: (theme) => theme.transitions.create(['transform', 'width']),
+                  fontSize: 0,
+                },
+                '&:hover': {
+                  backgroundColor: '#778899',
+                  width: 180,
+                  '& .MuiTypography-root': {
+                    transform: 'translateX(0px)',
+                    fontSize: 13,
+                  },
+                  '& svg': {
+                    mr: 2,
+                  },
+                },
+              }}
+              onClick={reset}
+            >
+              <DeleteIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
+              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Limpar</Typography>
+            </IconButton>
+            <br></br>
+            <br></br>
             <IconButton
               sx={{
                 backgroundColor: '#7fa91b',
@@ -271,7 +326,41 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
               onClick={guardar}
             >
               <SaveIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Guardar</Typography>
+              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Guardar Rascunho</Typography>
+            </IconButton>
+            <br></br>
+            <br></br>
+            <IconButton
+              sx={{
+                backgroundColor: '#ffcb2f ',
+                border: '3px solid #fff',
+                height: BUTTON_SIZE,
+                width: BUTTON_SIZE,
+                borderRadius: `${BUTTON_SIZE}px`,
+                transition: (theme) => theme.transitions.create(['width']),
+                textAlign: 'center',
+                overflow: 'hidden',
+                '& .MuiTypography-root': {
+                  transform: 'translateX(150px)',
+                  transition: (theme) => theme.transitions.create(['transform', 'width']),
+                  fontSize: 0,
+                },
+                '&:hover': {
+                  backgroundColor: '#ffcb2f ',
+                  width: 180,
+                  '& .MuiTypography-root': {
+                    transform: 'translateX(0px)',
+                    fontSize: 13,
+                  },
+                  '& svg': {
+                    mr: 2,
+                  },
+                },
+              }}
+              onClick={carregar}
+            >
+              <EditIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
+              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Carregar Rascunho</Typography>
             </IconButton>
             <br></br>
             <br></br>

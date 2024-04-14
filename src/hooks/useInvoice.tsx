@@ -12,6 +12,7 @@ import { IValidacoes } from '@/interfaces/validacoes';
 
 interface UseInvoiceHookReturn extends IInvoiceContext {
   reset: () => void;
+  replace: (newInvoice: SetStateAction<IInvoice>) => void;
   handleChangeTempo: (index: number, property: keyof ITempo, value: Date|string|number ) => void;
   append: (newTempo: ITempo) => void;
   remove: (index: number) => void;
@@ -37,6 +38,8 @@ export const useInvoice = (): UseInvoiceHookReturn => {
    * @return {void}
    */
   const reset = (): void => setInvoice(initialInvoiceData);
+  
+  const replace = (newInvoice: SetStateAction<IInvoice>): void => setInvoice(newInvoice);
 
   /**
    * Handle change invoice item.
@@ -138,6 +141,7 @@ export const useInvoice = (): UseInvoiceHookReturn => {
     invoice,
     setInvoice,
     reset,
+    replace,
     handleChangeTempo,
     append,
     remove,

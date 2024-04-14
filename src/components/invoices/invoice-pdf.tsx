@@ -201,6 +201,9 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
 
             </Box>
             </Container> 
+
+        <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
+
             </Page>
         <Page>
         <Container>
@@ -268,7 +271,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
           </Container> 
 
         {/* Footer messages */}
-        {/* <InvoiceFooter message={invoice.footerMessages} /> */}
+      <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
       </Page>
     </Document>
   );
