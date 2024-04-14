@@ -115,14 +115,14 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
 
   const carregar = (): void => {    
 
-    wait(5000);
     var ri = localStorage.getItem("rascunho");
 
     console.log(ri);
 
-    wait(5000);
     if(ri != null){
       var rascunhoInvoice = JSON.parse(ri);
+
+      rascunhoInvoice.temposServico = [];
 
       replace(rascunhoInvoice);
 
