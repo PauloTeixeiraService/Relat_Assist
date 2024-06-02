@@ -269,30 +269,30 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
                 borderRadius: `${BUTTON_SIZE}px`,
-                transition: (theme) => theme.transitions.create(['width']),
+                // transition: (theme) => theme.transitions.create(['width']),
                 textAlign: 'center',
-                overflow: 'hidden',
-                '& .MuiTypography-root': {
-                  transform: 'translateX(150px)',
-                  transition: (theme) => theme.transitions.create(['transform', 'width']),
-                  fontSize: 0,
-                },
-                '&:hover': {
-                  backgroundColor: '#778899',
-                  width: 180,
-                  '& .MuiTypography-root': {
-                    transform: 'translateX(0px)',
-                    fontSize: 13,
-                  },
-                  '& svg': {
-                    mr: 2,
-                  },
-                },
+                // overflow: 'hidden',
+                // '& .MuiTypography-root': {
+                //   transform: 'translateX(150px)',
+                //   transition: (theme) => theme.transitions.create(['transform', 'width']),
+                //   fontSize: 0,
+                // },
+                // '&:hover': {
+                //   backgroundColor: '#778899',
+                //   width: 180,
+                //   '& .MuiTypography-root': {
+                //     transform: 'translateX(0px)',
+                //     fontSize: 13,
+                //   },
+                //   '& svg': {
+                //     mr: 2,
+                //   },
+                // },
               }}
               onClick={reset}
             >
               <DeleteIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Limpar</Typography>
+              {/* <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Limpar</Typography> */}
             </IconButton>
             <br></br>
             <br></br>
@@ -303,30 +303,30 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
                 borderRadius: `${BUTTON_SIZE}px`,
-                transition: (theme) => theme.transitions.create(['width']),
+                // transition: (theme) => theme.transitions.create(['width']),
                 textAlign: 'center',
-                overflow: 'hidden',
-                '& .MuiTypography-root': {
-                  transform: 'translateX(150px)',
-                  transition: (theme) => theme.transitions.create(['transform', 'width']),
-                  fontSize: 0,
-                },
-                '&:hover': {
-                  backgroundColor: '#7fa91b',
-                  width: 180,
-                  '& .MuiTypography-root': {
-                    transform: 'translateX(0px)',
-                    fontSize: 13,
-                  },
-                  '& svg': {
-                    mr: 2,
-                  },
-                },
+                // overflow: 'hidden',
+                // '& .MuiTypography-root': {
+                //   transform: 'translateX(150px)',
+                //   transition: (theme) => theme.transitions.create(['transform', 'width']),
+                //   fontSize: 0,
+                // },
+                // '&:hover': {
+                //   backgroundColor: '#7fa91b',
+                //   width: 180,
+                //   '& .MuiTypography-root': {
+                //     transform: 'translateX(0px)',
+                //     fontSize: 13,
+                //   },
+                //   '& svg': {
+                //     mr: 2,
+                //   },
+                // },
               }}
               onClick={guardar}
             >
               <SaveIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Guardar Rascunho</Typography>
+              {/* <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Guardar Rascunho</Typography> */}
             </IconButton>
             <br></br>
             <br></br>
@@ -337,30 +337,30 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
                 borderRadius: `${BUTTON_SIZE}px`,
-                transition: (theme) => theme.transitions.create(['width']),
+                // transition: (theme) => theme.transitions.create(['width']),
                 textAlign: 'center',
-                overflow: 'hidden',
-                '& .MuiTypography-root': {
-                  transform: 'translateX(150px)',
-                  transition: (theme) => theme.transitions.create(['transform', 'width']),
-                  fontSize: 0,
-                },
-                '&:hover': {
-                  backgroundColor: '#ffcb2f ',
-                  width: 180,
-                  '& .MuiTypography-root': {
-                    transform: 'translateX(0px)',
-                    fontSize: 13,
-                  },
-                  '& svg': {
-                    mr: 2,
-                  },
-                },
+                // overflow: 'hidden',
+                // '& .MuiTypography-root': {
+                //   transform: 'translateX(150px)',
+                //   transition: (theme) => theme.transitions.create(['transform', 'width']),
+                //   fontSize: 0,
+                // },
+                // '&:hover': {
+                //   backgroundColor: '#ffcb2f ',
+                //   width: 180,
+                //   '& .MuiTypography-root': {
+                //     transform: 'translateX(0px)',
+                //     fontSize: 13,
+                //   },
+                //   '& svg': {
+                //     mr: 2,
+                //   },
+                // },
               }}
               onClick={carregar}
             >
               <EditIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Carregar Rascunho</Typography>
+              {/* <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Carregar Rascunho</Typography> */}
             </IconButton>
             <br></br>
             <br></br>
@@ -371,30 +371,30 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
                 borderRadius: `${BUTTON_SIZE}px`,
-                transition: (theme) => theme.transitions.create(['width']),
+                // transition: (theme) => theme.transitions.create(['width']),
                 textAlign: 'center',
-                overflow: 'hidden',
-                '& .MuiTypography-root': {
-                  transform: 'translateX(150px)',
-                  transition: (theme) => theme.transitions.create(['transform', 'width']),
-                  fontSize: 0,
-                },
-                '&:hover': {
-                  backgroundColor: 'secondary.main',
-                  width: 180,
-                  '& .MuiTypography-root': {
-                    transform: 'translateX(0px)',
-                    fontSize: 13,
-                  },
-                  '& svg': {
-                    mr: 2,
-                  },
-                },
+                // overflow: 'hidden',
+                // '& .MuiTypography-root': {
+                //   transform: 'translateX(150px)',
+                //   transition: (theme) => theme.transitions.create(['transform', 'width']),
+                //   fontSize: 0,
+                // },
+                // '&:hover': {
+                //   backgroundColor: 'secondary.main',
+                //   width: 180,
+                //   '& .MuiTypography-root': {
+                //     transform: 'translateX(0px)',
+                //     fontSize: 13,
+                //   },
+                //   '& svg': {
+                //     mr: 2,
+                //   },
+                // },
               }}
               onClick={handleDownloadPdf}
             >
               <DownloadIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Download PDF</Typography>
+              {/* <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Download PDF</Typography> */}
             </IconButton>
             <br></br>
             <br></br>
@@ -405,30 +405,30 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
                 height: BUTTON_SIZE,
                 width: BUTTON_SIZE,
                 borderRadius: `${BUTTON_SIZE}px`,
-                transition: (theme) => theme.transitions.create(['width']),
+                // transition: (theme) => theme.transitions.create(['width']),
                 textAlign: 'center',
-                overflow: 'hidden',
-                '& .MuiTypography-root': {
-                  transform: 'translateX(150px)',
-                  transition: (theme) => theme.transitions.create(['transform', 'width']),
-                  fontSize: 0,
-                },
-                '&:hover': {
-                  backgroundColor: '#a91b38',
-                  width: 180,
-                  '& .MuiTypography-root': {
-                    transform: 'translateX(0px)',
-                    fontSize: 13,
-                  },
-                  '& svg': {
-                    mr: 2,
-                  },
-                },
+                // overflow: 'hidden',
+                // '& .MuiTypography-root': {
+                //   transform: 'translateX(150px)',
+                //   transition: (theme) => theme.transitions.create(['transform', 'width']),
+                //   fontSize: 0,
+                // },
+                // '&:hover': {
+                //   backgroundColor: '#a91b38',
+                //   width: 180,
+                //   '& .MuiTypography-root': {
+                //     transform: 'translateX(0px)',
+                //     fontSize: 13,
+                //   },
+                //   '& svg': {
+                //     mr: 2,
+                //   },
+                // },
               }}
               onClick={handleSendPdf}
             >
               <SendIcon sx={{ color: 'secondary.contrastText', fontSize: 26 }} />
-              <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Enviar Registo</Typography>
+              {/* <Typography sx={{ color: 'secondary.contrastText', fontWeight: 'bold' }}>Enviar Registo</Typography> */}
             </IconButton>
             </div>
           )
