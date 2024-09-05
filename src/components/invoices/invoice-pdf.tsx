@@ -196,7 +196,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <SectionTitle>Validações</SectionTitle>
               <PDFDataBold>Validado por: {invoice.validacoes.nomePessoa}</PDFDataBold>
               <br></br>
-              <PDFDataBold>Em: {new Date(invoice.validacoes.validadoEm).toLocaleTimeString()}</PDFDataBold>
+              <PDFDataBold>Em: {new Date(invoice.validacoes.validadoEm).toLocaleDateString()}</PDFDataBold>
               <br></br>
             
             </Box>

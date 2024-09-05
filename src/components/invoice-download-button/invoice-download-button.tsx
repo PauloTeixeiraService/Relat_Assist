@@ -56,8 +56,6 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
   const { invoice_data: persistedInvoice } = useAppSelector((state) => state.invoice);
   const { invoice, replace, reset } = useInvoice();
   
-  console.log(invoice);
-
   const [pdfInstance, updatePdfInstance] = usePDF({
     document: persistedInvoice ? (
       <PdfDocument invoice={invoice} />

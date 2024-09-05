@@ -52,10 +52,11 @@ const DialogValidacoes: FC = () => {
   }, [validacoes]);
 
   const onChangeDate = (d: string | null): void => {
+    console.log(d);
     if(d != null) setValidacoes({ ...validacoes, validadoEm: d });
   };
 
-  
+
   return (
     <BaseDialog
       maxWidth="md"
@@ -83,7 +84,7 @@ const DialogValidacoes: FC = () => {
           <div style={{ height: "30px", lineHeight: "30px" }}>
           Validado em:
           </div>
-        </Grid>            
+        </Grid>
         <Grid item xs={11} sm={5}>
           {/* <EditableDatePicker2
             value={validacoes.validadoEm}
@@ -93,10 +94,10 @@ const DialogValidacoes: FC = () => {
           />  */}
           <DesktopDatePicker
             value={validacoes.validadoEm}
-            format='dd/MM/yyyy'      
+            format='dd/MM/yyyy'
             slotProps={{ textField: { variant: 'standard', InputProps: { disableUnderline: true },} }}
             onChange={(newValue) => onChangeDate(newValue)}
-          /> 
+          />
         </Grid>
       </Grid>
     </BaseDialog>
