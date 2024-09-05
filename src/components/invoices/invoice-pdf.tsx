@@ -192,6 +192,12 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Material para orçamentar: {invoice.materiais.materialParaOrcamentar}</PDFDataBold>
               <br></br>
 
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Validações</SectionTitle>
+              <PDFDataBold>Validado por: {invoice.validacoes.nomePessoa}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Em: {invoice.validacoes.validadoEm}</PDFDataBold>
+              <br></br>
             
             </Box>
             
