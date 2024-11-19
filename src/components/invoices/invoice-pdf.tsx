@@ -183,21 +183,6 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
               <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
               <br></br>
-
-              
-              <SectionTitle> </SectionTitle>
-              <SectionTitle>Materiais</SectionTitle>
-              <PDFDataBold>Material Aplicado: {invoice.materiais.materialAplicado}</PDFDataBold>
-              <br></br>
-              <PDFDataBold>Material para orçamentar: {invoice.materiais.materialParaOrcamentar}</PDFDataBold>
-              <br></br>
-
-              <SectionTitle> </SectionTitle>
-              <SectionTitle>Validações</SectionTitle>
-              <PDFDataBold>Validado por: {invoice.validacoes.nomePessoa}</PDFDataBold>
-              <br></br>
-              <PDFDataBold>Em: {new Date(invoice.validacoes.validadoEm).toLocaleDateString()}</PDFDataBold>
-              <br></br>
             
             </Box>
             
@@ -218,6 +203,21 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <SectionTitle> </SectionTitle>
               <SectionTitle> </SectionTitle>
             <br></br>
+            
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Materiais</SectionTitle>
+              <PDFDataBold>Material Aplicado: {invoice.materiais.materialAplicado}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Material para orçamentar: {invoice.materiais.materialParaOrcamentar}</PDFDataBold>
+              <br></br>
+
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Validações</SectionTitle>
+              <PDFDataBold>Validado por: {invoice.validacoes.nomePessoa}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Em: {new Date(invoice.validacoes.validadoEm).toLocaleDateString()}</PDFDataBold>
+              <br></br>
+            
             <SectionTitle>Horas de Serviço a Registar:</SectionTitle>
             <br></br>
             <InvoiceItemHeaderDisplay />
