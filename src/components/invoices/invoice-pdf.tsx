@@ -218,6 +218,10 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Em: {new Date(invoice.validacoes.validadoEm).toLocaleDateString()}</PDFDataBold>
               <br></br>
             
+              <SectionTitle> </SectionTitle>
+              <SectionTitle> </SectionTitle>
+            <br></br>
+            
             <SectionTitle>Horas de Serviço a Registar:</SectionTitle>
             <br></br>
             <InvoiceItemHeaderDisplay />
