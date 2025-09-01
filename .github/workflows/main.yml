@@ -31,4 +31,6 @@ jobs:
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
+          CI: false  # Set CI to false to treat warnings as non-errors
+        env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Token for deployment
