@@ -142,9 +142,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
           <InvoiceTitle title="RELATÓRIO" />
           <SectionTitle> </SectionTitle>
           
-          {/* <InvoiceInfo invoiceNumber={localStorage.getItem("count")} />*/}
-          
-          <InvoiceInfo invoiceNumber=1 />
+          <InvoiceInfo invoiceNumber={localStorage.getItem("count")} />
               <SectionTitle> </SectionTitle>
               <SectionTitle> </SectionTitle>
           <br></br>
