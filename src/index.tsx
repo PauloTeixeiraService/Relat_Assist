@@ -4,7 +4,7 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 // Components.
-import App from './app';
+import App from './App';
 
 // import BrowserRouter from 'react-router-dom/BrowserRouter'
 
