@@ -35,7 +35,7 @@ jobs:
           git config --global user.name "PauloTeixeiraService"
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        run: npx gh-pages -d build
         env:
           CI: false  # Set CI to false to treat warnings as non-errors
           GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Make sure this is correct
