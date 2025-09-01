@@ -38,4 +38,4 @@ jobs:
         run: npm run deploy
         env:
           CI: false  # Set CI to false to treat warnings as non-errors
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}  # Token for deployment
+          GH_TOKEN: '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'
