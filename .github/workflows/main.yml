@@ -28,6 +28,12 @@ jobs:
           CI: false  # Set CI to false to treat warnings as non-errors
         run: npm run build
 
+        
+      - name: Set up Git user
+        run: |
+          git config --global user.email "miguelbrunopaiva.silva@gmail.com"
+          git config --global user.name "PauloTeixeiraService"
+
       - name: Deploy to GitHub Pages
         run: npm run deploy
         env:
