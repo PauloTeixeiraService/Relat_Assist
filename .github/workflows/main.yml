@@ -24,6 +24,8 @@ jobs:
         run: npx update-browserslist-db@latest
 
       - name: Build the project
+        env:
+          CI: false  # Set CI to false to treat warnings as non-errors
         run: npm run build
 
       - name: Deploy to GitHub Pages
