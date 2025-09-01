@@ -206,8 +206,16 @@ const InvoiceDownloadButton: FC<Props> = ({ setInvoice }) => {
     updatePdfInstance(<PdfDocument invoice={invoice} />);
 
     wait(5000);
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
     
-    const invoiceFileName = `relatorio_Nr_${initialValue}_data_${format(new Date(persistedInvoice.date), 'dd_MM_yyyy')}.pdf`;
+    const invoiceFileName = `relatorio_Nr_${year}${month}${day}${hours}${minutes}${seconds}.pdf`;
 
     fetch(String(pdfInstance.url), {
       method: 'GET',
