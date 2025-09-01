@@ -144,7 +144,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
           
           {/* <InvoiceInfo invoiceNumber={localStorage.getItem("count")} />*/}
           
-          <InvoiceInfo invoiceNumber={getCurrentTimestamp()} />
+          <InvoiceInfo invoiceNumber="1" />
               <SectionTitle> </SectionTitle>
               <SectionTitle> </SectionTitle>
           <br></br>
@@ -156,6 +156,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
             <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '22px' }}>
               <br></br>
               <SectionTitle>Cliente</SectionTitle>
+              <SectionTitle>{getCurrentTimestamp()}</SectionTitle>
               <PDFDataBold>Nome: {invoice.cliente.nome}</PDFDataBold>
               <br></br>
               <PDFDataBold>NIF: {invoice.cliente.NIF}</PDFDataBold>
