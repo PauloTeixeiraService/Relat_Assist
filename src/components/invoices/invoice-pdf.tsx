@@ -208,7 +208,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Descrição do Pedido: {invoice.solicitacaoAssistencia.descricaoPedido}</PDFDataBold>
               <br></br>
 
-              <PDFDataBold>{descricaoServicoLines.length}</PDFDataBold>
+              <PDFDataBold>{descricaoServicoLines}</PDFDataBold>
 
               {descricaoServicoLines < 13 ? (
       <>
