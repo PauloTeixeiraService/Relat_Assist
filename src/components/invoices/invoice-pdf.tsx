@@ -92,9 +92,9 @@ const getLineCount = (text: string) => {
   const span = document.createElement("span");
   span.style.position = "absolute";
   span.style.visibility = "hidden";
-  span.style.fontSize = "14px"; // Adjust to your font size
+  span.style.fontSize = "15px"; // Adjust to your font size
   span.style.lineHeight = "1.5"; // Adjust to your line height
-  span.style.width = "5000px"; // Adjust to your desired width
+  span.style.width = "6000px"; // Adjust to your desired width
   span.textContent = text;
 
   document.body.appendChild(span);
