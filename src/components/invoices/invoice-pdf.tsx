@@ -213,7 +213,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Descrição do Pedido: {invoice.solicitacaoAssistencia.descricaoPedido}</PDFDataBold>
               <br></br>
 
-              {descricaoServicoLines.length > 12 && (
+              {descricaoServicoLines.length > 12?(
                           </Box>
                           <SectionTitle> </SectionTitle>
                           <SectionTitle> </SectionTitle>
@@ -229,7 +229,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
                         <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '22px' }}>
                           <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '22px' }}>
                           <br></br>
-              )}
+              ):null}
                             
               <SectionTitle> </SectionTitle>
               <SectionTitle>Serviços Efetuados</SectionTitle>
