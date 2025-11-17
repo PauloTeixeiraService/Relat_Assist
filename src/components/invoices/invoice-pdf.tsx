@@ -252,7 +252,6 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
               <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
               <br></br>
-            ):null}
             
             </Box>
             
