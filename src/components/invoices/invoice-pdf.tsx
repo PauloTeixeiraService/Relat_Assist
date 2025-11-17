@@ -88,7 +88,7 @@ const baseUrlFont = true
 // });
 
 // Function to split text based on the desired number of lines
-const splitTextToLines = (text, maxLines, charsPerLine) => {
+const splitTextToLines = (text: string, maxLines: number, charsPerLine: number): string[] => {
     const lines = [];
     const words = text.split(' ');
     let currentLine = '';
