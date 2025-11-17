@@ -87,29 +87,24 @@ const baseUrlFont = true
 //   ],
 // });
 
-// Function to split text based on the desired number of lines
-const splitTextToLines = (text: string, maxLines: number, charsPerLine: number): string[] => {
-    const lines = [];
-    const words = text.split(' ');
-    let currentLine = '';
+const getLineCount = (text: string) => {
+  // Create a temporary span element
+  const span = document.createElement("span");
+  span.style.position = "absolute";
+  span.style.visibility = "hidden";
+  span.style.fontSize = "12px"; // Adjust to your font size
+  span.style.lineHeight = "1.5"; // Adjust to your line height
+  span.style.width = "300px"; // Adjust to your desired width
+  span.textContent = text;
 
-    for (let word of words) {
-        const lineTest = currentLine + (currentLine ? ' ' : '') + word;
+  document.body.appendChild(span);
+  const lineHeight = parseFloat(span.style.lineHeight);
+  const height = span.offsetHeight;
+  document.body.removeChild(span);
 
-        if (lineTest.length > charsPerLine) {
-            lines.push(currentLine);
-            currentLine = word; // Start a new line
-        } else {
-            currentLine = lineTest;
-        }
-    }
-
-    // Add the last line if not empty
-    if (currentLine) {
-        lines.push(currentLine);
-    }
-
-    return lines.slice(0, maxLines);
+  // Calculate the number of lines
+  const lineCount = Math.ceil(height / lineHeight);
+  return lineCount;
 };
 
 /**
@@ -117,7 +112,7 @@ const splitTextToLines = (text: string, maxLines: number, charsPerLine: number):
  */
 const InvoicePdf: FC<Props> = ({ invoice }) => {
 
-  const descricaoServicoLines = splitTextToLines(invoice.servicosEfetuados.descricaoServico ?? '', 12, 50);
+  const descricaoServicoLines = getLineCount(invoice.servicosEfetuados.descricaoServico ?? '');
   
   const getCurrentTimestamp = () => {
     const now = new Date();
