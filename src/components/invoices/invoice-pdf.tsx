@@ -212,6 +212,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
 
               {descricaoServicoLines.length < 13 ? (
+      <>
               <SectionTitle> </SectionTitle>
               <SectionTitle>Serviços Efetuados</SectionTitle>
               <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
@@ -220,6 +221,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
               <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
               <br></br>
+        </>
             ):null}
             
             </Box>
@@ -236,7 +238,8 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
             </Page>
 
      {descricaoServicoLines.length > 12 ? (
-    <Page>
+       <>
+       <Page>
         <Container>
         <SectionTitle> </SectionTitle>
           <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '22px' }}>
@@ -263,6 +266,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
         <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
 
             </Page>
+              </>
     
     ):null}
   
