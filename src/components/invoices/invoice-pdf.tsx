@@ -87,24 +87,20 @@ const baseUrlFont = true
 //   ],
 // });
 
-const getLineCount = (text: string) => {
-  // Create a temporary span element
-  const span = document.createElement("span");
-  span.style.position = "absolute";
-  span.style.visibility = "hidden";
-  span.style.fontSize = "15px"; // Adjust to your font size
-  span.style.lineHeight = "1.5"; // Adjust to your line height
-  span.style.width = "6000px"; // Adjust to your desired width
-  span.textContent = text;
+const estimateLineCount = (text: string, containerWidth=300, fontSize = 12, lineHeight = 15) => {
+  // Split the text by new lines
+  const lines = text.split('\n');
+  const averageCharacterWidth = 6; // Adjust this if necessary
+  let totalLineCount = 0;
 
-  document.body.appendChild(span);
-  const lineHeight = parseFloat(span.style.lineHeight);
-  const height = span.offsetHeight;
-  document.body.removeChild(span);
+  // Calculate the number of lines for each segment
+  lines.forEach(line => {
+    const charactersPerLine = Math.floor(containerWidth / averageCharacterWidth);
+    const numberOfLinesForCurrentLine = Math.ceil(line.length / charactersPerLine);
+    totalLineCount += numberOfLinesForCurrentLine;
+  });
 
-  // Calculate the number of lines
-  const lineCount = Math.ceil(height / lineHeight);
-  return lineCount;
+  return totalLineCount;
 };
 
 /**
@@ -112,7 +108,7 @@ const getLineCount = (text: string) => {
  */
 const InvoicePdf: FC<Props> = ({ invoice }) => {
 
-  const descricaoServicoLines = getLineCount(invoice.servicosEfetuados.descricaoServico ?? '');
+  const descricaoServicoLines = estimateLineCount(invoice.servicosEfetuados.descricaoServico ?? '');
   
   const getCurrentTimestamp = () => {
     const now = new Date();
