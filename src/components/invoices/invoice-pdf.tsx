@@ -87,11 +87,38 @@ const baseUrlFont = true
 //   ],
 // });
 
+// Function to split text based on the desired number of lines
+const splitTextToLines = (text, maxLines, charsPerLine) => {
+    const lines = [];
+    const words = text.split(' ');
+    let currentLine = '';
+
+    for (let word of words) {
+        const lineTest = currentLine + (currentLine ? ' ' : '') + word;
+
+        if (lineTest.length > charsPerLine) {
+            lines.push(currentLine);
+            currentLine = word; // Start a new line
+        } else {
+            currentLine = lineTest;
+        }
+    }
+
+    // Add the last line if not empty
+    if (currentLine) {
+        lines.push(currentLine);
+    }
+
+    return lines.slice(0, maxLines);
+};
+
 /**
  * Main Invoice Component.
  */
 const InvoicePdf: FC<Props> = ({ invoice }) => {
-
+  
+  const descricaoServicoLines = splitTextToLines(invoice.servicosEfetuados.descricaoServico, 12, 50);
+  
   const getCurrentTimestamp = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -189,26 +216,78 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               
               <SectionTitle> </SectionTitle>
               <SectionTitle>Serviços Efetuados</SectionTitle>
-              <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
-              <br></br>
-              <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
-              <br></br>
-              <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
-              <br></br>
+              <PDFDataBold>Descrição do Serviço:</PDFDataBold>
+
+                    {descricaoServicoLines.map((line, index) => (
+                        <Text key={index}>{line}</Text>
+                    ))}
+              
+                    {descricaoServicoLines.length > 12 && (
+      
+                        </Box>
+                        
+                          <SectionTitle> </SectionTitle>
+                          <SectionTitle> </SectionTitle>
+                        <br></br>
             
-            </Box>
+                        </Box>
+                        </Container> 
+                        <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
+
+                        </Page>
+                        <Page>
+                            <Container>
+                              
+                              <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '22px' }}>
+                                {/* <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginRight: '20px' }}>
+                                  <InvoiceCompanyLogo logo={invoice.logo} onUploadImage={updateLogo} />
+                                  <InvoiceSender from={invoice.sender} handleOpenDialog={onOpenDialogEditSender} />
+                                </Box> */}
+                                <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '22px' }}>
+                                  <br></br>
+                                    <SectionTitle>Serviços Efetuados (Continuação)</SectionTitle>
+                                    {descricaoServicoLines.slice(12).map((line, index) => (
+                                        <Text key={index}>{line}</Text>
+                                    ))}
+
+                                    <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
+                                      <br></br>
+                                      <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
+                                      <br></br>
+                                    
+                                    </Box>
+                                    
+                                      <SectionTitle> </SectionTitle>
+                                      <SectionTitle> </SectionTitle>
+                                    <br></br>
+                        
+                                    </Box>
+                                    </Container> 
+                    )}
+              
+              
+                    {descricaoServicoLines.length < 13 && (
+                            <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
+                            <br></br>
+                            <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
+                            <br></br>
+              
+                          </Box>
+              
+                        <SectionTitle> </SectionTitle>
+                        <SectionTitle> </SectionTitle>
+                        <br></br>
             
-              <SectionTitle> </SectionTitle>
-              <SectionTitle> </SectionTitle>
-            <br></br>
+                        </Box>
+                      </Container> 
+                      <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
 
-            </Box>
-            </Container> 
+                      </Page>
+                      <Page>
+                    )}
 
-        <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
 
-            </Page>
-        <Page>
+                        
         <Container>
           <Box style={{ marginBottom: '16px' }}>
             <hr></hr>
