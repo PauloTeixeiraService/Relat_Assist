@@ -117,6 +117,8 @@ const splitTextToLines = (text: string, maxLines: number, charsPerLine: number):
  */
 const InvoicePdf: FC<Props> = ({ invoice }) => {
 
+  const descricaoServicoLines = splitTextToLines(invoice.servicosEfetuados.descricaoServico, 12, 50);
+  
   const getCurrentTimestamp = () => {
     const now = new Date();
     const year = now.getFullYear();
