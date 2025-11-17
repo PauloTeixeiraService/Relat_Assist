@@ -116,9 +116,7 @@ const splitTextToLines = (text, maxLines, charsPerLine) => {
  * Main Invoice Component.
  */
 const InvoicePdf: FC<Props> = ({ invoice }) => {
-  
-  const descricaoServicoLines = splitTextToLines(invoice.servicosEfetuados.descricaoServico, 12, 50);
-  
+
   const getCurrentTimestamp = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -213,30 +211,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Descrição do Pedido: {invoice.solicitacaoAssistencia.descricaoPedido}</PDFDataBold>
               <br></br>
 
-               {descricaoServicoLines.length > 12 ? (
-    <>
-      </Box> {/* Close the current Box */}
-      </Container> {/* Close the current Container */}
-      </Page> {/* Close the current Page */}
-
-      <Page> {/* Start new Page */}
-        <Container> {/* Start new Container */}
-          <Box style={{ display: 'flex', flexDirection: 'column', marginLeft: '22px' }}>
-            <br></br>
-            <SectionTitle>Serviços Efetuados</SectionTitle>
-            <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
-            <br></br>
-            <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
-            <br></br>
-            <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
-            <br></br>
-          </Box>
-        </Container>
-      </Page>
-    </>
-  ) : null} {/* Render nothing if the condition is not met */}
-</Box>
-                            
+              {descricaoServicoLines.length < 13 ? (
               <SectionTitle> </SectionTitle>
               <SectionTitle>Serviços Efetuados</SectionTitle>
               <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
@@ -245,6 +220,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <br></br>
               <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
               <br></br>
+            ):null}
             
             </Box>
             
@@ -258,6 +234,38 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
         <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
 
             </Page>
+
+     {descricaoServicoLines.length > 12 ? (
+    <Page>
+        <Container>
+        <SectionTitle> </SectionTitle>
+          <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: '22px' }}>
+            <Box style={{ display: 'flex', flex: 1, flexDirection: 'column', marginLeft: '22px' }}>
+              <SectionTitle> </SectionTitle>
+              <SectionTitle>Serviços Efetuados</SectionTitle>
+              <PDFDataBold>Descrição do Serviço: {invoice.servicosEfetuados.descricaoServico}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Permanecem Serviços Pendentes: {invoice.servicosEfetuados.permanecemServicosPendentes}</PDFDataBold>
+              <br></br>
+              <PDFDataBold>Máquina Operacional: {invoice.servicosEfetuados.maquinaOperacional}</PDFDataBold>
+              <br></br>
+            ):null}
+            
+            </Box>
+            
+              <SectionTitle> </SectionTitle>
+              <SectionTitle> </SectionTitle>
+            <br></br>
+
+            </Box>
+            </Container> 
+
+        <InvoiceFooter message={"Pateknika Unipessoal Lda | Rua Chaimite 360 4435-025 Rio Tinto | NIF: 518074633 \n Móvel: 964007744 (Rede Móvel Nacional) | pateknika@outlook.pt | www.Pateknika.pt"} />
+
+            </Page>
+    
+    ):null}
+  
         <Page>
         <Container>
           <Box style={{ marginBottom: '16px' }}>
