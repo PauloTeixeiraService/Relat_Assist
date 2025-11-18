@@ -87,7 +87,7 @@ const baseUrlFont = true
 //   ],
 // });
 
-const estimateLineCount = (text: string, containerWidth=400, fontSize = 15, lineHeight = 15) => {
+const estimateLineCount = (text: string, containerWidth=600, fontSize = 16, lineHeight = 15) => {
   // Split the text by new lines
   const lines = text.split('\n');
   const averageCharacterWidth = 6; // Adjust this if necessary
