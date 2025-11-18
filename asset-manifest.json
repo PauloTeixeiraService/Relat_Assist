@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/Relat_Assist/static/css/main.a2621d78.css",
-    "main.js": "/Relat_Assist/static/js/main.61ece3dd.js",
+    "main.js": "/Relat_Assist/static/js/main.b952622d.js",
     "static/js/821.c7bd50bc.chunk.js": "/Relat_Assist/static/js/821.c7bd50bc.chunk.js",
-    "static/js/922.1deb49ce.chunk.js": "/Relat_Assist/static/js/922.1deb49ce.chunk.js",
+    "static/js/922.3a289bb6.chunk.js": "/Relat_Assist/static/js/922.3a289bb6.chunk.js",
     "static/js/239.4bbc972b.chunk.js": "/Relat_Assist/static/js/239.4bbc972b.chunk.js",
     "static/js/7.b1b2b635.chunk.js": "/Relat_Assist/static/js/7.b1b2b635.chunk.js",
     "static/media/PATEKNIKA_logo_vertical_fundo_branco.png": "/Relat_Assist/static/media/PATEKNIKA_logo_vertical_fundo_branco.32b74549d47b19503982.png",
@@ -11,14 +11,14 @@
     "static/media/background_header.jpg": "/Relat_Assist/static/media/background_header.91aece3cf188811f2e12.jpg",
     "index.html": "/Relat_Assist/index.html",
     "main.a2621d78.css.map": "/Relat_Assist/static/css/main.a2621d78.css.map",
-    "main.61ece3dd.js.map": "/Relat_Assist/static/js/main.61ece3dd.js.map",
+    "main.b952622d.js.map": "/Relat_Assist/static/js/main.b952622d.js.map",
     "821.c7bd50bc.chunk.js.map": "/Relat_Assist/static/js/821.c7bd50bc.chunk.js.map",
-    "922.1deb49ce.chunk.js.map": "/Relat_Assist/static/js/922.1deb49ce.chunk.js.map",
+    "922.3a289bb6.chunk.js.map": "/Relat_Assist/static/js/922.3a289bb6.chunk.js.map",
     "239.4bbc972b.chunk.js.map": "/Relat_Assist/static/js/239.4bbc972b.chunk.js.map",
     "7.b1b2b635.chunk.js.map": "/Relat_Assist/static/js/7.b1b2b635.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2621d78.css",
-    "static/js/main.61ece3dd.js"
+    "static/js/main.b952622d.js"
   ]
 }
