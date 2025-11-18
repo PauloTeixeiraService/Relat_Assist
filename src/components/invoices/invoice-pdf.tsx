@@ -204,9 +204,8 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
               <PDFDataBold>Descrição do Pedido: {invoice.solicitacaoAssistencia.descricaoPedido}</PDFDataBold>
               <br></br>
 
-              <PDFDataBold>{descricaoServicoLines}</PDFDataBold>
 
-              {descricaoServicoLines < 13 ? (
+              {descricaoServicoLines < 10 ? (
       <>
               <SectionTitle> </SectionTitle>
               <SectionTitle>Serviços Efetuados</SectionTitle>
@@ -232,7 +231,7 @@ const InvoicePdf: FC<Props> = ({ invoice }) => {
 
             </Page>
 
-     {descricaoServicoLines > 12 ? (
+     {descricaoServicoLines > 9 ? (
        <>
        <Page>
         <Container>
